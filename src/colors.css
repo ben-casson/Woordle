@@ -1,0 +1,21 @@
+:root,
+:root.dark {
+    --background-color: #121213;
+    --text-color: #fff;
+    --secondary-text-color: #fff;
+    --dark-gray: #3A3A3C;
+    --light-gray: #818384;
+    --empty-box-border-color: var(var(--dark-gray));
+    --yellow: #B59F3B;
+    --green: #538D4E;
+}
+:root.light {
+    --background-color: #fff;
+    --text-color: #fff;
+    --secondary-text-color: #000;
+    --dark-gray: #787C7E;
+    --light-gray: #D3D6DA;
+    --empty-box-border-color: var(var(--light-gray));
+    --yellow: #C9B458;
+    --green: #6AAA64;
+}
