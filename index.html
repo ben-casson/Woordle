@@ -8,38 +8,35 @@
     <script src="main.js" defer></script>
 </head>
 <body class="dark">
-    
-    <!-- example use of changing theme -->
-    <!-- <button class="mobile theme-button light" onclick="setTheme('light')"> -->
 
-        <div id="site-container">
-            
-            <!-- 
-                Site Header
-             -->
-            <header>
-                <div class="menu-left">
-                    <button class="skip-button">skip</button>
-                    <button id="help-button" aria-label="Help">
-                        <!-- svg -->
-                    </button>
-                </div>
-                <h1 class="title">Wordle</h1>
-                <div class="menu-right">
-                    <button id="statistics-button" aria-label="Statistics">
-                        <svg id="statistics-icon" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
-                            <path d="M16,11V3H8v6H2v12h20V11H16z M10,5h4v14h-4V5z M4,11h4v8H4V11z M20,19h-4v-6h4V19z"></path>
-                        </svg>
-                    </button>
-                    <button id="theme-button">theme
-                        <!-- svg -->
-                    </button>
-                </div>
-            </header>
+    <div id="site-container">
+        <!-- 
+            Site Header
+            -->
+        <header>
+            <div class="menu-left">
+                <button id="skip-button">skip</button>
+                <button id="help-button" aria-label="Help">
+                    <!-- svg -->
+                </button>
+            </div>
+            <h1 class="title">Wordle</h1>
+            <div class="menu-right">
+                <button id="statistics-button" aria-label="Statistics">
+                    <svg id="statistics-icon" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
+                        <path d="M16,11V3H8v6H2v12h20V11H16z M10,5h4v14h-4V5z M4,11h4v8H4V11z M20,19h-4v-6h4V19z"></path>
+                    </svg>
+                </button>
+                <button id="theme-button">theme
+                    <!-- svg -->
+                </button>
+            </div>
+        </header>
 
-            <!-- 
+        <div class="content-container">
+            <!--
                 Instructions Menu
-             -->
+                -->
             <div id="help-container">
                 <div class="content">
                     <header>
@@ -51,9 +48,9 @@
                     <section>
                         <div class="instructions">
                             <p>Guess the WORDLE in six tries.</p>
-                            <p>Each guess must be a valid five-letter word. 
+                            <p>Each guess must be a valid five-letter word.
                                 Hit the enter button to submit.</p>
-                            <p>After each guess, the color of the tiles will change 
+                            <p>After each guess, the color of the tiles will change
                                 to show how close your guess was to the word.</p>
                             <div class="examples">
                                 <p>Examples</p>
@@ -89,16 +86,15 @@
                                 </div>
                             </div>
                             <p>Click the <span></span> button to skip to a new wordle. This will
-                               result in a loss if any guesses were made. 
+                                result in a loss if any guesses were made.
                             </p>
                         </div>
                     </section>
                 </div>
             </div>
-
-            <!-- 
-                Statistics 
-             -->
+            <!--
+                Statistics
+                -->
             <div class="statistics-container">
                 <div class="content">
                     <button class="close-button">
@@ -154,10 +150,9 @@
                     </div>
                 </div>
             </div>
-
-            <!-- 
+            <!--
                 Game
-             -->
+                -->
             <div class="game-container">
                 <div class="gameboard-container">
                     <div class="gameboard">
@@ -205,10 +200,9 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- 
+                <!--
                     Keyboard
-                 -->
+                    -->
                 <div class="keyboard-container">
                     <div class="keyboard">
                         <div class="row">
@@ -251,5 +245,6 @@
                 </div>
             </div>
         </div>
+    </div>
 </body>
 </html>
