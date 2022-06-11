@@ -7,7 +7,7 @@
     <title>Wordle</title>
     <script src="main.js" defer></script>
 </head>
-<body>
+<body class="dark">
     
     <!-- example use of changing theme -->
     <!-- <button class="mobile theme-button light" onclick="setTheme('light')"> -->
@@ -65,9 +65,30 @@
                                     </div>
                                     <p>The letter W is in the word and in the correct spot.</p>
                                 </div>
-                                <div class="example"></div>
-                                <div class="example"></div>
+                                <div class="example">
+                                    <div class="row">
+                                        <div class="tile">P</div>
+                                        <div class="tile">I</div>
+                                        <div class="tile">L</div>
+                                        <div class="tile">L</div>
+                                        <div class="tile">S</div>
+                                    </div>
+                                    <p>The letter I is in the word but in the wrong spot.</p>
+                                </div>
+                                <div class="example">
+                                    <div class="row">
+                                        <div class="tile">V</div>
+                                        <div class="tile">A</div>
+                                        <div class="tile">G</div>
+                                        <div class="tile">U</div>
+                                        <div class="tile">E</div>
+                                    </div>
+                                    <p>The letter U is not in the word in any spot.</p>
+                                </div>
                             </div>
+                            <p>Click the <span></span> button to skip to a new wordle. This will
+                               result in a loss if any guesses were made. 
+                            </p>
                         </div>
                     </section>
                 </div>
@@ -133,13 +154,11 @@
             </div>
 
             <!-- 
-                Settings
+                Theme Button
              -->
-            <div class="settings-container">
-                <div class="content">
-                    
-                </div>
-            </div>
+             <button id="theme-button" onclick="setTheme('dark')">theme
+                <!-- svg -->
+             </button>
 
             <!-- 
                 Game
