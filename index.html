@@ -33,127 +33,10 @@
             </div>
         </header>
 
-        <div class="content-container">
-            <!--
-                Instructions Menu
-                -->
-            <div id="help-container">
-                <div class="content">
-                    <header>
-                        <h1>HOW TO PLAY</h1>
-                        <button class="close-button">
-                            <!-- svg -->
-                        </button>
-                    </header>
-                    <section>
-                        <div class="instructions">
-                            <p>Guess the WORDLE in six tries.</p>
-                            <p>Each guess must be a valid five-letter word.
-                                Hit the enter button to submit.</p>
-                            <p>After each guess, the color of the tiles will change
-                                to show how close your guess was to the word.</p>
-                            <div class="examples">
-                                <p>Examples</p>
-                                <div class="example">
-                                    <div class="row">
-                                        <div class="tile">W</div>
-                                        <div class="tile">E</div>
-                                        <div class="tile">A</div>
-                                        <div class="tile">R</div>
-                                        <div class="tile">Y</div>
-                                    </div>
-                                    <p>The letter W is in the word and in the correct spot.</p>
-                                </div>
-                                <div class="example">
-                                    <div class="row">
-                                        <div class="tile">P</div>
-                                        <div class="tile">I</div>
-                                        <div class="tile">L</div>
-                                        <div class="tile">L</div>
-                                        <div class="tile">S</div>
-                                    </div>
-                                    <p>The letter I is in the word but in the wrong spot.</p>
-                                </div>
-                                <div class="example">
-                                    <div class="row">
-                                        <div class="tile">V</div>
-                                        <div class="tile">A</div>
-                                        <div class="tile">G</div>
-                                        <div class="tile">U</div>
-                                        <div class="tile">E</div>
-                                    </div>
-                                    <p>The letter U is not in the word in any spot.</p>
-                                </div>
-                            </div>
-                            <p>Click the <span></span> button to skip to a new wordle. This will
-                                result in a loss if any guesses were made.
-                            </p>
-                        </div>
-                    </section>
-                </div>
-            </div>
-            <!--
-                Statistics
-                -->
-            <div class="statistics-container">
-                <div class="content">
-                    <button class="close-button">
-                        <!-- svg -->
-                    </button>
-                    <div class="statistics-content">
-                        <h1>Statistics</h1>
-                        <div class="statistics">
-                            <div class="statistic-container">
-                                <div class="statistic">0</div>
-                                <p class="label">Played</p>
-                            </div>
-                            <div class="statistic-container">
-                                <div class="statistic">0</div>
-                                <p class="label">Win %</p>
-                            </div>
-                            <div class="statistic-container">
-                                <div class="statistic">0</div>
-                                <p class="label">Current Streak</p>
-                            </div>
-                            <div class="statistic-container">
-                                <div class="statistic">0</div>
-                                <p class="label">Max Streak</p>
-                            </div>
-                        </div>
-                        <h1>Guess Distribution</h1>
-                        <div class="guess-distribution-container">
-                            <div class="row">
-                                <div class="guess">1</div>
-                                <div class="graph">0</div>
-                            </div>
-                            <div class="row">
-                                <div class="guess">2</div>
-                                <div class="graph">0</div>
-                            </div>
-                            <div class="row">
-                                <div class="guess">3</div>
-                                <div class="graph">0</div>
-                            </div>
-                            <div class="row">
-                                <div class="guess">4</div>
-                                <div class="graph">0</div>
-                            </div>
-                            <div class="row">
-                                <div class="guess">5</div>
-                                <div class="graph">0</div>
-                            </div>
-                            <div class="row">
-                                <div class="guess">6</div>
-                                <div class="graph">0</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
             <!--
                 Game
                 -->
-            <div class="game-container">
+            <div id="game-container">
                 <div class="gameboard-container">
                     <div class="gameboard">
                         <div class="row">
@@ -241,6 +124,121 @@
                                 <!-- svg -->
                             </button>
                         </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+    <!--
+    Instructions Menu
+    -->
+    <div id="help-container">
+        <div class="content">
+            <header>
+                <h1>HOW TO PLAY</h1>
+                <button class="close-button">
+                    <!-- svg -->
+                </button>
+            </header>
+            <section>
+                <div class="instructions">
+                    <p>Guess the WORDLE in six tries.</p>
+                    <p>Each guess must be a valid five-letter word.
+                        Hit the enter button to submit.</p>
+                    <p>After each guess, the color of the tiles will change
+                        to show how close your guess was to the word.</p>
+                    <div class="examples">
+                        <p>Examples</p>
+                        <div class="example">
+                            <div class="row">
+                                <div class="tile">W</div>
+                                <div class="tile">E</div>
+                                <div class="tile">A</div>
+                                <div class="tile">R</div>
+                                <div class="tile">Y</div>
+                            </div>
+                            <p>The letter W is in the word and in the correct spot.</p>
+                        </div>
+                        <div class="example">
+                            <div class="row">
+                                <div class="tile">P</div>
+                                <div class="tile">I</div>
+                                <div class="tile">L</div>
+                                <div class="tile">L</div>
+                                <div class="tile">S</div>
+                            </div>
+                            <p>The letter I is in the word but in the wrong spot.</p>
+                        </div>
+                        <div class="example">
+                            <div class="row">
+                                <div class="tile">V</div>
+                                <div class="tile">A</div>
+                                <div class="tile">G</div>
+                                <div class="tile">U</div>
+                                <div class="tile">E</div>
+                            </div>
+                            <p>The letter U is not in the word in any spot.</p>
+                        </div>
+                    </div>
+                    <p>Click the <span></span> button to skip to a new wordle. This will
+                        result in a loss if any guesses were made.
+                    </p>
+                </div>
+            </section>
+        </div>
+    </div>
+    <!--
+        Statistics
+        -->
+    <div id="statistics-container">
+        <div class="content">
+            <button class="close-button">
+                <!-- svg -->
+            </button>
+            <div class="statistics-content">
+                <h1>Statistics</h1>
+                <div class="statistics">
+                    <div class="statistic-container">
+                        <div class="statistic">0</div>
+                        <p class="label">Played</p>
+                    </div>
+                    <div class="statistic-container">
+                        <div class="statistic">0</div>
+                        <p class="label">Win %</p>
+                    </div>
+                    <div class="statistic-container">
+                        <div class="statistic">0</div>
+                        <p class="label">Current Streak</p>
+                    </div>
+                    <div class="statistic-container">
+                        <div class="statistic">0</div>
+                        <p class="label">Max Streak</p>
+                    </div>
+                </div>
+                <h1>Guess Distribution</h1>
+                <div class="guess-distribution-container">
+                    <div class="row">
+                        <div class="guess">1</div>
+                        <div class="graph">0</div>
+                    </div>
+                    <div class="row">
+                        <div class="guess">2</div>
+                        <div class="graph">0</div>
+                    </div>
+                    <div class="row">
+                        <div class="guess">3</div>
+                        <div class="graph">0</div>
+                    </div>
+                    <div class="row">
+                        <div class="guess">4</div>
+                        <div class="graph">0</div>
+                    </div>
+                    <div class="row">
+                        <div class="guess">5</div>
+                        <div class="graph">0</div>
+                    </div>
+                    <div class="row">
+                        <div class="guess">6</div>
+                        <div class="graph">0</div>
                     </div>
                 </div>
             </div>
