@@ -4,6 +4,10 @@
     font-family: 'Karnak';
     src: url(../fonts/karnakcondensed-normal-700.woff);
 }
+@font-face {
+    font-family: 'Clear Sans';
+    src: url(../fonts/ClearSans-Bold.ttf);
+}
 
 
 body {
@@ -124,6 +128,7 @@ body.light {
     grid-template-areas: "gameboard"
                          "keyboard";
     justify-self: center;
+    justify-content: center;
     max-width: 500px;
 }
 
@@ -158,34 +163,73 @@ body.light {
     height: 200px;
     grid-area: keyboard;
     justify-self: center;
+    width: 100vw;
 }
 
 .keyboard {
     display: grid;
     grid-template-rows: 1fr 1fr 1fr;
     width: 100%;
+    max-width: 500px;
     margin: 0 auto 8px;
     touch-action: manipulation;
-    gap: 7px;
+    gap: 8px;
 }
 
-.keyboard .row {
+.row1,
+.row2,
+.row3 {
     display: grid;
-    grid-template-columns: repeat(10, 1fr);
     justify-self: center;
-    gap: 7px;
+    width: 100%;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+.row1 {
+    grid-template-columns: repeat(10, 1fr);
+    gap: 6px;
+}
+.row2 {
+    grid-template-columns: 1fr repeat(9, 2fr) 1fr;
+    // gap: 3px;
+}
+.row3 {
+    grid-template-columns: 3fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 3fr;
+    gap: 6px;
 }
 
-.row button {
+.row1 button,
+.row2 button,
+.row3 button {
     background-color: var(--light-gray);
     color: var(--text-color);
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-weight: bold;
+    font-size: 13px;
     height: 58px;
+    max-width: 43px;
+    border-radius: 4px;
 }
-@media (min-width: 500px) {
-    .row button {
-        width: 43px;
-    }
+.row2 button {
+    margin-right: 6px;
 }
+.row2:nth-child(1),
+.row2:nth-child(10),
+.row2:nth-child(11) {
+    margin: 0;
+}
+
+#enter-button,
+#delete-button {
+    min-width: min-content;
+    max-width: 65px;
+    padding: 0;
+}
+// @media (min-width: 500px) {
+//     .row button {
+//         width: 43px;
+//     }
+// }
 
 // .keyboard > * > * {
 //     width: 43px;
