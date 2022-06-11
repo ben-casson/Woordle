@@ -52,7 +52,8 @@ button {
     font-style: italic;
     color: var(--text-color);
     font-size: 16px;
-    font-weight: 600;
+    font-weight: 500;
+    letter-spacing: 1px;
     cursor: pointer;
 }
 
@@ -96,8 +97,8 @@ body.light {
     font-size: 22px;
     font-family: 'Karnak';
     font-weight: 400;
-    margin-left: 16px;
-    letter-spacing: 0.4px;
+    margin-left: 12px;
+    letter-spacing: 0.3px;
 }
 @media (min-width: 360px) {
     .title {
@@ -111,7 +112,7 @@ body.light {
     background-color: transparent;
     color: var(--text-color);
     font-size: 16px;
-    font-weight: 600;
+    font-weight: 500;
 }
 
 #help-container,
@@ -138,8 +139,9 @@ body.light {
     justify-content: center;
     align-items: center;
     // flex-grow: 1;
-    overflow: hidden;
+    // overflow: hidden;
     justify-self: center;
+    width: 100vw;
 }
 
 .gameboard {
@@ -147,16 +149,54 @@ body.light {
     grid-template-rows: repeat(6, 1fr);
     grid-gap: 5px;
     padding: 10px;
+    width: 100%;
+    height: calc(100vh - 250px);
+    // height: calc(100vh - 250px);
 }
-.gameboard > * {
+@media (min-width: 350px) {
+    .gameboard {
+        max-width: 350px;
+    }
+}
+@media (min-height: 670px) {
+    .gameboard {
+        max-height: 420px;
+    }
+}
+
+.gameboard .row {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     grid-gap: 5px;
 }
+// .row .tile::before {
+//     content: '';
+//     display: inline-block;
+//     padding-bottom: 100%;
+// }
 .row .tile {
-    border: 2px solid var(--dark-gray);
     width: 100%;
-    line-height: 2rem;
+    // display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    font-weight: bold;
+    vertical-align: middle;
+    box-sizing: border-box;
+    color: var(--tile-text-color);
+    text-transform: uppercase;
+    user-select: none;
+}
+
+body.dark {
+    .row .tile[data-state="empty"] {
+        border: 2px solid var(--dark-gray);
+    }    
+}
+body.light {
+    .row .tile[data-state="empty"] {
+        border: 2px solid var(--light-gray);
+    }    
 }
 
 .keyboard-container {
