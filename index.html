@@ -12,12 +12,18 @@
     <!-- example use of changing theme -->
     <!-- <button class="mobile theme-button light" onclick="setTheme('light')"> -->
 
-        <div id="site-wrapper">
+        <div id="site-container">
             
+            <!-- 
+                Site Header
+             -->
             <header>
-                <button id="help-button" aria-label="Help">
-                    <!-- svg -->
-                </button>
+                <div class="menu-left">
+                    <button class="skip-button">skip</button>
+                    <button id="help-button" aria-label="Help">
+                        <!-- svg -->
+                    </button>
+                </div>
                 <h1 class="title">Wordle</h1>
                 <div class="menu-right">
                     <button id="statistics-button" aria-label="Statistics">
@@ -29,6 +35,9 @@
                 </div>
             </header>
 
+            <!-- 
+                Instructions Menu
+             -->
             <div id="help-container">
                 <div class="content">
                     <header>
@@ -63,6 +72,10 @@
                     </section>
                 </div>
             </div>
+
+            <!-- 
+                Statistics 
+             -->
             <div class="statistics-container">
                 <div class="content">
                     <button class="close-button">
@@ -89,15 +102,48 @@
                             </div>
                         </div>
                         <h1>Guess Distribution</h1>
-                        
+                        <div class="guess-distribution-container">
+                            <div class="row">
+                                <div class="guess">1</div>
+                                <div class="graph">0</div>
+                            </div>
+                            <div class="row">
+                                <div class="guess">2</div>
+                                <div class="graph">0</div>
+                            </div>
+                            <div class="row">
+                                <div class="guess">3</div>
+                                <div class="graph">0</div>
+                            </div>
+                            <div class="row">
+                                <div class="guess">4</div>
+                                <div class="graph">0</div>
+                            </div>
+                            <div class="row">
+                                <div class="guess">5</div>
+                                <div class="graph">0</div>
+                            </div>
+                            <div class="row">
+                                <div class="guess">6</div>
+                                <div class="graph">0</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
+
+            <!-- 
+                Settings
+             -->
             <div class="settings-container">
                 <div class="content">
                     
                 </div>
             </div>
+
+            <!-- 
+                Game
+             -->
             <div class="game-container">
                 <div class="gameboard-container">
                     <div class="gameboard">
@@ -145,6 +191,10 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- 
+                    Keyboard
+                 -->
                 <div class="keyboard-container">
                     <div class="keyboard">
                         <div class="row">
