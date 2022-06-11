@@ -1,6 +1,99 @@
 @import 'reset.css';
 @import 'variables.css';
+@font-face {
+    font-family: 'Karnak';
+    // src: url(../fonts/KarnakPro-CondensedBlack.ttf);
+    src: url(../fonts/karnak-small-normal-400.ttf);
+}
+
+
+body {
+    color: var(--text-color);
+    font-family: 'Clear Sans', 'Helvetica Neue', Arial, sans-serif;
+    font-size: 14px;
+}
+
+button {
+    background-color: transparent;
+    border: none;
+    outline: none;
+}
 
 #site-container {
     background-color: var(--background-color);
+    display: flex;
+    flex-direction: column;
+}
+#site-container>header {
+    height: 50px;
+    padding: 0 16px;
+    border-bottom: 1px solid var(--dark-gray);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Karnak';
+    font-size: 37px;
+    letter-spacing: 0.5px;
+    font-weight: 400;
+}
+
+.menu-left,
+.menu-right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+body.dark {
+    #help-button {
+        background-image: url('../icons/help-white.png');
+        background-repeat:no-repeat;
+        background-position: center center;
+        height: 27px;
+        width: 32px;
+    }
+}
+body.light {
+    #help-button {
+        background-image: url('../icons/help-black.png');
+        background-repeat:no-repeat;
+        background-position: center center;
+        height: 27px;
+        width: 32px;
+    }
+}
+
+#statistics-icon {
+    fill: var(--icon-color);
+    width: 24px;
+    height: 24px;
+}
+
+#statistics-button {
+    margin-top: 3px;
+}
+
+#statistics-button,
+#statistics-button:hover,
+#help-button {
+    cursor: pointer;
+}
+
+.title {
+    pointer-events: none;
+}
+
+#theme-button {
+    cursor: pointer;
+    background-color: transparent;
+    outline: 2px solid var(--icon-color);
+    color: var(--text-color);
+    font-weight: 600;
+    border-radius: 5px;
+    padding: 3px 5px;
+}
+
+.game-container {
+    flex-grow: 1;
 }

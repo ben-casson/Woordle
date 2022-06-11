@@ -1,6 +1,5 @@
-// import './assets/reset.css';
 import './assets/style.scss';
-import { themeButton } from './theme';
+import { themeButton } from './theme.js';
 
 themeButton.addEventListener('click', () => {
     document.body.className ==='dark' ? document.body.className ='light' 

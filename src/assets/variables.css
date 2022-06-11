@@ -2,6 +2,7 @@ body.dark {
     --background-color: #121213;
     --text-color: #fff;
     --secondary-text-color: #fff;
+    --icon-color: #fff;
     --dark-gray: #3A3A3C;
     --light-gray: #818384;
     --empty-tile-border-color: var(--dark-gray);
@@ -10,8 +11,9 @@ body.dark {
 }
 body.light {
     --background-color: #fff;
-    --text-color: #fff;
-    --secondary-text-color: #000;
+    --text-color: #000;
+    --secondary-text-color: #fff;
+    --icon-color: #000;
     --dark-gray: #787C7E;
     --light-gray: #D3D6DA;
     --empty-tile-border-color: var(--light-gray);
