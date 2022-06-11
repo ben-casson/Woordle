@@ -3,7 +3,7 @@
 @font-face {
     font-family: 'Karnak';
     // src: url(../fonts/KarnakPro-CondensedBlack.ttf);
-    src: url(../fonts/karnak-small-normal-400.ttf);
+    src: url(../fonts/karnakcondensed-normal-700.woff);
 }
 
 
@@ -21,8 +21,11 @@ button {
 
 #site-container {
     background-color: var(--background-color);
-    display: flex;
-    flex-direction: column;
+    height: 100vh;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    grid-template-areas: "header"
+                         "game";
 }
 #site-container>header {
     height: 50px;
@@ -31,10 +34,7 @@ button {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-family: 'Karnak';
-    font-size: 37px;
-    letter-spacing: 0.5px;
-    font-weight: 400;
+    grid-area: header;
 }
 
 .menu-left,
@@ -43,6 +43,13 @@ button {
     justify-content: center;
     align-items: center;
     gap: 10px;
+}
+
+#skip-button {
+    font-style: italic;
+    color: var(--text-color);
+    font-weight: 600;
+    cursor: pointer;
 }
 
 body.dark {
@@ -83,6 +90,10 @@ body.light {
 .title {
     pointer-events: none;
     font-size: 22px;
+    font-family: 'Karnak';
+    font-weight: 400;
+    margin-left: 16px;
+    letter-spacing: 0.4px;
 }
 @media (min-width: 360px) {
     .title {
@@ -94,13 +105,16 @@ body.light {
 #theme-button {
     cursor: pointer;
     background-color: transparent;
-    outline: 2px solid var(--icon-color);
     color: var(--text-color);
     font-weight: 600;
-    border-radius: 5px;
-    padding: 3px 5px;
+    // outline: 2px solid var(--icon-color);
+    // border-radius: 5px;
+    // padding: 3px 5px;
 }
 
-.game-container {
-    flex-grow: 1;
+.content-container {
+    grid-area: game;
 }
+// .game-container {
+//     height: auto;
+// }
