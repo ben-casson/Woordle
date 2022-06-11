@@ -1,5 +1,4 @@
-:root,
-:root.dark {
+body.dark {
     --background-color: #121213;
     --text-color: #fff;
     --secondary-text-color: #fff;
@@ -9,7 +8,7 @@
     --yellow: #B59F3B;
     --green: #538D4E;
 }
-:root.light {
+body.light {
     --background-color: #fff;
     --text-color: #fff;
     --secondary-text-color: #000;
