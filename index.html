@@ -27,9 +27,11 @@
                 <h1 class="title">Wordle</h1>
                 <div class="menu-right">
                     <button id="statistics-button" aria-label="Statistics">
-                        <!-- svg -->
+                        <svg id="statistics-icon" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
+                            <path d="M16,11V3H8v6H2v12h20V11H16z M10,5h4v14h-4V5z M4,11h4v8H4V11z M20,19h-4v-6h4V19z"></path>
+                        </svg>
                     </button>
-                    <button id="settings-button" aria-label="Settings">
+                    <button id="theme-button">theme
                         <!-- svg -->
                     </button>
                 </div>
@@ -152,13 +154,6 @@
                     </div>
                 </div>
             </div>
-
-            <!-- 
-                Theme Button
-             -->
-             <button id="theme-button" onclick="setTheme('dark')">theme
-                <!-- svg -->
-             </button>
 
             <!-- 
                 Game
