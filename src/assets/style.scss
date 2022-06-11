@@ -82,6 +82,13 @@ body.light {
 
 .title {
     pointer-events: none;
+    font-size: 22px;
+}
+@media (min-width: 360px) {
+    .title {
+        pointer-events: none;
+        font-size: 37px;
+    }
 }
 
 #theme-button {
