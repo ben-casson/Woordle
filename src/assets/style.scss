@@ -191,7 +191,6 @@ body.light {
 }
 .row2 {
     grid-template-columns: 1fr repeat(9, 2fr) 1fr;
-    // gap: 3px;
 }
 .row3 {
     grid-template-columns: 3fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 3fr;
@@ -210,11 +209,16 @@ body.light {
     max-width: 43px;
     border-radius: 4px;
 }
+@media (min-width: 500px) {
+    .row2 button {
+        min-width: 43px;
+    }
+}
 .row2 button {
-    margin-right: 6px;
+    margin-right: 6.6px;
 }
 .row2:nth-child(1),
-.row2:nth-child(10),
+button[data-key="l"],
 .row2:nth-child(11) {
     margin: 0;
 }
@@ -223,15 +227,24 @@ body.light {
 #delete-button {
     min-width: min-content;
     max-width: 65px;
-    padding: 0;
+    // padding: 0;
 }
-// @media (min-width: 500px) {
-//     .row button {
-//         width: 43px;
-//     }
-// }
 
-// .keyboard > * > * {
-//     width: 43px;
-//     height: 58px;
-// }
+#enter-button {
+    font-size: 12px;
+}
+
+body.dark {
+    #delete-button {
+        background-image: url('../icons/delete-white.png');
+        background-repeat:no-repeat;
+        background-position: center center;
+    }
+}
+body.light {
+    #delete-button {
+        background-image: url('../icons/delete-black.png');
+        background-repeat:no-repeat;
+        background-position: center center;
+    }
+}
