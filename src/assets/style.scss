@@ -10,11 +10,12 @@
 }
 
 
-html {
-    height: 100%;
+html { 
+    height: 100%; 
 }
 
 body {
+    height: 100%;
     color: var(--text-color);
     font-family: 'Clear Sans', 'Helvetica Neue', Arial, sans-serif;
     font-size: 14px;
@@ -28,7 +29,8 @@ button {
 
 #site-container {
     background-color: var(--background-color);
-    height: 100vh;
+    // height: 100vh;
+    // min-height: -webkit-fill-available;
     display: grid;
     grid-template-rows: auto 1fr;
     grid-template-areas: "header"
