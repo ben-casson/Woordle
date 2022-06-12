@@ -28,6 +28,10 @@ button {
 }
 
 #site-container {
+    position: absolute;
+    right: 0;
+    left: 0;
+    bottom: 0;
     background-color: var(--background-color);
     height: 100vh;
     // min-height: -webkit-fill-available;
@@ -39,7 +43,6 @@ button {
 #site-container>header {
     height: 50px;
     padding: 0 16px;
-    border-bottom: 1px solid var(--dark-gray);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -64,6 +67,10 @@ button {
 }
 
 body.dark {
+    #site-container>header {
+        border-bottom: 1px solid var(--dark-gray);
+    }
+
     #help-button {
         background-image: url('../icons/help-white.png');
         background-repeat:no-repeat;
@@ -73,6 +80,10 @@ body.dark {
     }
 }
 body.light {
+    #site-container>header {
+        border-bottom: 1px solid var(--light-gray);
+    }
+
     #help-button {
         background-image: url('../icons/help-black.png');
         background-repeat:no-repeat;
