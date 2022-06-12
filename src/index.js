@@ -13,6 +13,7 @@ themeButton.addEventListener('click', () => {
 // });
 
 
-document.body.style.height = window.innerHeight + "px";
+document.style.height = window.innerHeight + "px";
+document.style.width = window.innerWidth + "px";
 
 //on page load - display instructions if local storage is empty
