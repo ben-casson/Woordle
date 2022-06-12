@@ -14,6 +14,4 @@ function randomArrayShuffle(array) {
     return array;
 }
 
-randomArrayShuffle(newWordsArray);
-
 export { newWordsArray, randomArrayShuffle };
