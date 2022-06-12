@@ -41,7 +41,7 @@ button {
     grid-template-areas: "header"
                          "game";
 }
-#site-container>header {
+#site-container > header {
     height: 50px;
     padding: 0 16px;
     display: flex;
@@ -61,6 +61,9 @@ button {
     .menu-left,
     .menu-right {
         gap: 0px;
+    }
+    #site-container > header {
+        padding: 0 8px;
     }
 }
 
