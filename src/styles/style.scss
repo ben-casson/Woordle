@@ -4,10 +4,10 @@
     font-family: 'Karnak';
     src: url(../fonts/karnakcondensed-normal-700.woff);
 }
-@font-face {
-    font-family: 'Clear Sans';
-    src: url(../fonts/ClearSans-Bold.ttf);
-}
+// @font-face {
+//     font-family: 'Clear Sans';
+//     src: url(../fonts/ClearSans-Bold.ttf);
+// }
 
 
 html { 
@@ -17,7 +17,7 @@ html {
 body {
     height: 100%;
     color: var(--text-color);
-    font-family: 'Clear Sans', 'Helvetica Neue', Arial, sans-serif;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
     font-size: 14px;
 }
 
