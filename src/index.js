@@ -2,9 +2,9 @@ import './styles/style.scss';
 import { themeButton } from './theme.js';
 import { newWordsArray, randomArrayShuffle } from './script.js';
 
-console.log(newWordsArray);
-randomArrayShuffle(newWordsArray);
-console.log(newWordsArray);
+// console.log(newWordsArray);
+// randomArrayShuffle(newWordsArray);
+// console.log(newWordsArray);
 
 
 
