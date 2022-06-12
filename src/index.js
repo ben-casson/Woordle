@@ -1,5 +1,13 @@
 import './styles/style.scss';
 import { themeButton } from './theme.js';
+import { newWordsArray, randomArrayShuffle } from './script';
+
+console.log(newWordsArray);
+randomArrayShuffle(newWordsArray);
+console.log(newWordsArray);
+
+
+
 
 themeButton.addEventListener('click', () => {
     document.body.className ==='dark' ? document.body.className ='light' 
@@ -13,7 +21,8 @@ themeButton.addEventListener('click', () => {
 // });
 
 
-document.style.height = window.innerHeight + "px";
-document.style.width = window.innerWidth + "px";
+//document.style is undefined
+// document.style.height = window.innerHeight + "px";
+// document.style.width = window.innerWidth + "px";
 
 //on page load - display instructions if local storage is empty
