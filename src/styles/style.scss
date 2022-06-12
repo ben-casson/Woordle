@@ -109,6 +109,7 @@ body.light {
 #statistics-button {
     margin-top: 3px;
     margin-left: 3px;
+    margin-right: -3px;
 }
 
 #statistics-button,
@@ -176,7 +177,7 @@ $mobile-height: -webkit-fill-available;
     grid-gap: 5px;
     padding: 10px;
     width: 100%;
-    height: calc(95vh - 250px);
+    height: calc(90vh - 250px);
     // height: calc(100vh - 250px);
     // height: calc($mobile-height - 250px);
 }
@@ -271,6 +272,13 @@ body.light {
     justify-content: center;
     align-items: center;
     cursor: pointer;
+}
+@media (max-width: 400px) {
+    .row1 button,
+    .row2 button,
+    .row3 button {
+        font-size: 12px;
+    }
 }
 
 .no-margin {
