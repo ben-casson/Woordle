@@ -1,4 +1,4 @@
-import './assets/style.scss';
+import './styles/style.scss';
 import { themeButton } from './theme.js';
 
 themeButton.addEventListener('click', () => {
