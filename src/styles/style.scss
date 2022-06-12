@@ -57,6 +57,12 @@ button {
     align-items: center;
     gap: 5px;
 }
+@media (max-width: 360px) {
+    .menu-left,
+    .menu-right {
+        gap: 2px;
+    }
+}
 
 #skip-button {
     font-style: italic;
