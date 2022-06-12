@@ -216,7 +216,7 @@ body.light {
     display: grid;
     grid-template-rows: 1fr 1fr 1fr;
     width: 100%;
-    max-width: 100vw;
+    // max-width: 100vw;
     margin: 0 auto 8px;
     touch-action: manipulation;
     gap: 8px;
@@ -233,14 +233,14 @@ body.light {
 }
 .row1 {
     grid-template-columns: repeat(10, 1fr);
-    gap: 6px;
+    gap: 2px;
 }
 .row2 {
     grid-template-columns: 1fr repeat(9, 2fr) 1fr;
 }
 .row3 {
     grid-template-columns: 3fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 3fr;
-    gap: 6px;
+    gap: 2px;
 }
 
 .row1 button,
@@ -255,17 +255,25 @@ body.light {
     max-width: 43px;
     border-radius: 4px;
 }
+
+.row2 button {
+    margin-right: 2.6px;
+}
+
 @media (min-width: 500px) {
     .row2 button {
         min-width: 43px;
+        margin-right: 6.6px;
     }
     .keyboard {
         max-width: 500px;
     }
+    .row1,
+    .row3 {
+        gap: 6px;
+    }
 }
-.row2 button {
-    margin-right: 6.6px;
-}
+
 .row2:nth-child(1),
 button[data-key="l"],
 .row2:nth-child(11) {
