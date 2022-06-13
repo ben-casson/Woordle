@@ -40,15 +40,23 @@ button {
     grid-template-rows: auto 1fr;
     grid-template-areas: "header"
                          "game";
+    header {
+        height: 50px;
+        padding: 0 16px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        grid-area: header;
+    }
 }
-#site-container > header {
-    height: 50px;
-    padding: 0 16px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    grid-area: header;
-}
+// #site-container > header {
+//     height: 50px;
+//     padding: 0 16px;
+//     display: flex;
+//     justify-content: space-between;
+//     align-items: center;
+//     grid-area: header;
+// }
 
 .menu-left,
 .menu-right {
