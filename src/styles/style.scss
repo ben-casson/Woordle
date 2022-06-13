@@ -152,11 +152,123 @@ body.light {
     font-weight: 500;
 }
 
-#help-container,
-#statistics-container {
+#help-container {
     display: none;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    justify-content: center;
+    background-color: var(--background-color);
+    // opacity: 0;
+    // -webkit-animation: fadein 1000ms linear forwards;
+    // animation: fadein 1000ms linear forwards;
+    z-index: 2000;  
+}
+@-webkit-keyframes fadein {
+    from {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+    // 0%,100% { opacity: 0; }
+    // 50% { opacity: 1; }
+  }
+  
+@keyframes fadein {
+    from {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+    // 0%,100% { opacity: 0; }
+    // 50% { opacity: 1; }
 }
 
+#help-container.open {
+    display: flex;
+    // -webkit-animation: fadeout 1000ms linear;
+    // animation: fadeout 1000ms linear;
+    -webkit-animation: fadein 100ms linear forwards;
+    animation: fadein 100ms linear forwards;
+    // opacity: 1;
+}
+#help-container.fadeout {
+    -webkit-animation: fadeout 2000ms ease-out forwards;
+    animation: fadeout 2000ms ease-out forwards;
+}
+@-webkit-keyframes fadeout {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(100%);
+    }
+    0% {
+        opacity: 0.3;
+    }
+    60% {
+        opacity: 0;
+    }
+    // 0%,100% { opacity: 0; }
+    // 50% { opacity: 1; }
+  }
+  
+@keyframes fadeout {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(100%);
+    }
+    0% {
+        opacity: 0.3;
+    }
+    60% {
+        opacity: 0;
+    }
+    // 0%,100% { opacity: 0; }
+    // 50% { opacity: 1; }
+}
+
+#help-container {
+    .content {
+        position: relative;
+        color: var(--color-tone-1);
+        padding: 0 32px;
+        max-width: var(--game-max-width);
+        width: 100%;
+        overflow-y: auto;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+#close-help-menu-button {
+    font-size: 20px;
+    color: var(--text-color);
+    cursor: pointer;
+}
 
 
 #game-container {

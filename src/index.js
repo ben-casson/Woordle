@@ -13,6 +13,32 @@ themeButton.addEventListener('click', () => {
                                       : document.body.className ='dark';
 });
 
+
+const helpButton = document.getElementById('help-button');
+const helpMenuContainer = document.getElementById('help-container');
+const closeHelpMenuButton = document.getElementById('close-help-menu-button');
+
+function openHelpMenu() {
+    helpMenuContainer.classList.add('open');
+}
+
+function closeHelpMenu() {
+    helpMenuContainer.classList.remove('open');
+}
+
+helpButton.addEventListener('click', () => {
+    helpMenuContainer.classList.remove('fadeout');
+    openHelpMenu();
+});
+
+closeHelpMenuButton.addEventListener('click', () => {
+    helpMenuContainer.classList.add('fadeout');
+    setTimeout(() => {
+        closeHelpMenu();
+    }, 100);
+    //add fadeout class
+});
+
 // const siteContainer = document.getElementById("site-container");
 // siteContainer.style.height = window.innerHeight + "px";
 // window.addEventListener('resize', () => {
