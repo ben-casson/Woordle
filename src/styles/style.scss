@@ -168,66 +168,62 @@ body.light {
 }
 @-webkit-keyframes fadein {
     from {
-        transform: translateY(100%);
+        transform: translateY(30%);
         opacity: 0;
     }
     to {
         transform: translateY(0);
         opacity: 1;
     }
-    50% {
+    70% {
         opacity: 0;
     }
     100% {
         opacity: 1;
     }
-    // 0%,100% { opacity: 0; }
-    // 50% { opacity: 1; }
   }
   
 @keyframes fadein {
     from {
-        transform: translateY(100%);
+        transform: translateY(30%);
         opacity: 0;
     }
     to {
         transform: translateY(0);
         opacity: 1;
     }
-    50% {
+    70% {
         opacity: 0;
     }
     100% {
         opacity: 1;
     }
-    // 0%,100% { opacity: 0; }
-    // 50% { opacity: 1; }
 }
 
 #help-container.open {
     display: flex;
     // -webkit-animation: fadeout 1000ms linear;
     // animation: fadeout 1000ms linear;
-    -webkit-animation: fadein 100ms linear forwards;
-    animation: fadein 100ms linear forwards;
+    -webkit-animation: fadein 225ms cubic-bezier(0,.89,.17,.82) forwards; // ease
+    animation: fadein 225ms cubic-bezier(0,.89,.17,.82) forwards;  //ease
     // opacity: 1;
 }
 #help-container.fadeout {
-    -webkit-animation: fadeout 2000ms ease-out forwards;
-    animation: fadeout 2000ms ease-out forwards;
+    -webkit-animation: fadeout 1000ms ease forwards;
+    animation: fadeout 1000ms ease forwards;
 }
 @-webkit-keyframes fadeout {
     from {
         transform: translateY(0);
     }
     to {
-        transform: translateY(100%);
+        transform: translateY(60%);
     }
     0% {
-        opacity: 0.3;
+        opacity: 0.6;
     }
-    60% {
-        opacity: 0;
+    25% {
+        opacity: 0.0;
     }
     // 0%,100% { opacity: 0; }
     // 50% { opacity: 1; }
@@ -238,13 +234,13 @@ body.light {
         transform: translateY(0);
     }
     to {
-        transform: translateY(100%);
+        transform: translateY(60%);
     }
     0% {
-        opacity: 0.3;
+        opacity: 0.6;
     }
-    60% {
-        opacity: 0;
+    25% {
+        opacity: 0.0;
     }
     // 0%,100% { opacity: 0; }
     // 50% { opacity: 1; }

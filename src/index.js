@@ -35,7 +35,7 @@ closeHelpMenuButton.addEventListener('click', () => {
     helpMenuContainer.classList.add('fadeout');
     setTimeout(() => {
         closeHelpMenu();
-    }, 100);
+    }, 200);
     //add fadeout class
 });
 
