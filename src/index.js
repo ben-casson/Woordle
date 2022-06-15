@@ -77,19 +77,6 @@ function randomArrayShuffle(array) {
 }
 
 
-
-// let currentWord = "";
-// function getNewGameWord() {
-//     if (newWordsArrayLS.length === 0) {
-//         fillNewWordsArrayLS();
-//     }
-//     currentWord = newWordsArrayLS.pop();
-//     console.log(currentWord);
-//     localStorage.setItem('newWordsArrayLS', JSON.stringify(newWordsArrayLS));
-//     oldWordsArrayLS.push(currentWord);
-//     localStorage.setItem('oldWordsArrayLS', JSON.stringify(oldWordsArrayLS));
-// }
-
 //moves all old words back to newWordsArrayLS when there are no more new words 
 function fillNewWordsArrayLS() {
     oldWordsArrayLS = JSON.parse(localStorage.getItem('oldWordsArrayLS'));
@@ -100,17 +87,13 @@ function fillNewWordsArrayLS() {
     localStorage.setItem('oldWordsArrayLS', JSON.stringify(oldWordsArrayLS));
 }
 
-// let gameExists = false;
-
 const Game = () => {
     let currentWord = "";
-    // gameExists = true;
     const setNewGameWord = () => {
         if (newWordsArrayLS.length === 0) {
             fillNewWordsArrayLS();
         }
         currentWord = newWordsArrayLS.pop();
-        // console.log(currentWord);
         localStorage.setItem('newWordsArrayLS', JSON.stringify(newWordsArrayLS));
         oldWordsArrayLS.push(currentWord);
         localStorage.setItem('oldWordsArrayLS', JSON.stringify(oldWordsArrayLS));
@@ -136,14 +119,18 @@ function checkForEmptyLSArray() {
       }
 }
 
-//skip current word and use a new one
+
 const skipButton = document.getElementById('skip-button');
+
+//skip current word and use a new one
 function skipWord() {
     wordleGame.setNewGameWord();
 }
 skipButton.addEventListener('click', () => {
     skipWord();
     // console.log(wordleGame.getCurrentWord());
+
+    //display modal containing correct word and 'new wordle' button that closes modal
 });
 
 window.onload = () => {
