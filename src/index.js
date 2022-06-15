@@ -120,6 +120,37 @@ function checkForEmptyLSArray() {
 }
 
 
+// const gameRowArray = [...document.querySelectorAll('.game-row')];
+const GameRow = row => {
+    // let getElement = () => {
+    //     let element = document.querySelector(`.gameRow${rowNumber}`);
+    //     return element;
+    // }
+    let rowNumber = row;
+    // let getTilesArray = () => {
+    //     const tilesArray = [...getElement().children];
+    //     return tilesArray;
+    // }
+    let filled = false;
+    return {rowNumber, filled};
+}
+// const gameRow1 = document.querySelector('.gameRow1');
+const gameRow1Object = Object.create(GameRow('1'));
+// const gameRow2 = document.querySelector('.gameRow2');
+const gameRow2Object = Object.create(GameRow('2'));
+// const gameRow3 = document.querySelector('.gameRow3');
+const gameRow3Object = Object.create(GameRow('3'));
+// const gameRow4 = document.querySelector('.gameRow4');
+const gameRow4Object = Object.create(GameRow('4'));
+// const gameRow5 = document.querySelector('.gameRow5');
+const gameRow5Object = Object.create(GameRow('5'));
+// const gameRow6 = document.querySelector('.gameRow6');
+const gameRow6Object = Object.create(GameRow('6'));
+const gameRowObjects = [gameRow1Object, gameRow2Object, gameRow3Object, gameRow4Object, gameRow5Object, gameRow6Object];
+// const gameTileArray = [...document.querySelectorAll('.game-tile')];
+const keyboardButtonsArray = [...document.querySelectorAll('.letter-button')];
+const enterButton = document.getElementById('enter-button');
+
 const skipButton = document.getElementById('skip-button');
 
 //skip current word and use a new one
@@ -131,7 +162,43 @@ skipButton.addEventListener('click', () => {
     // console.log(wordleGame.getCurrentWord());
 
     //display modal containing correct word and 'new wordle' button that closes modal
+
+    //mark all rows and tiles !filled
 });
+
+
+
+
+
+//array of rows
+//array of tiles
+//on letter click, check if first row is filled
+//      if not, loop through row and textContent !filled tile then break;
+keyboardButtonsArray.forEach((letter) => {
+    letter.addEventListener('click', () => {
+        loop1:
+            for (let row of gameRowObjects) {
+                if (row.filled === false) {
+                    const rowTilesArray = [...document.querySelector(`.game-row${row.rowNumber}`).children];
+        loop2:
+                    for (let tile of rowTilesArray) {
+                        if (tile.textContent === '') {
+                            tile.textContent = letter.dataset.key;
+                            break loop1;
+                        }
+                    }
+                }
+            }
+    });
+});
+
+
+//on enter click, if all tiles filled then mark row as filled
+
+
+
+
+
 
 window.onload = () => {
     if (oldWordsArrayLS === null) {openHelpMenu()}
