@@ -120,7 +120,6 @@ function checkForEmptyLSArray() {
 }
 
 
-// const gameRowArray = [...document.querySelectorAll('.game-row')];
 const GameRow = row => {
     // let getElement = () => {
     //     let element = document.querySelector(`.gameRow${rowNumber}`);
@@ -134,20 +133,14 @@ const GameRow = row => {
     let filled = false;
     return {rowNumber, filled};
 }
-// const gameRow1 = document.querySelector('.gameRow1');
 const gameRow1Object = Object.create(GameRow('1'));
-// const gameRow2 = document.querySelector('.gameRow2');
 const gameRow2Object = Object.create(GameRow('2'));
-// const gameRow3 = document.querySelector('.gameRow3');
 const gameRow3Object = Object.create(GameRow('3'));
-// const gameRow4 = document.querySelector('.gameRow4');
 const gameRow4Object = Object.create(GameRow('4'));
-// const gameRow5 = document.querySelector('.gameRow5');
 const gameRow5Object = Object.create(GameRow('5'));
-// const gameRow6 = document.querySelector('.gameRow6');
 const gameRow6Object = Object.create(GameRow('6'));
 const gameRowObjects = [gameRow1Object, gameRow2Object, gameRow3Object, gameRow4Object, gameRow5Object, gameRow6Object];
-// const gameTileArray = [...document.querySelectorAll('.game-tile')];
+
 const keyboardButtonsArray = [...document.querySelectorAll('.letter-button')];
 const enterButton = document.getElementById('enter-button');
 
