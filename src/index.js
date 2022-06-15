@@ -174,21 +174,31 @@ skipButton.addEventListener('click', () => {
 //array of tiles
 //on letter click, check if first row is filled
 //      if not, loop through row and textContent !filled tile then break;
-keyboardButtonsArray.forEach((letter) => {
-    letter.addEventListener('click', () => {
-        loop1:
-            for (let row of gameRowObjects) {
-                if (row.filled === false) {
-                    const rowTilesArray = [...document.querySelector(`.game-row${row.rowNumber}`).children];
-        loop2:
-                    for (let tile of rowTilesArray) {
-                        if (tile.textContent === '') {
-                            tile.textContent = letter.dataset.key;
-                            break loop1;
-                        }
-                    }
+function displayTileLetter(letter) {
+    loop1:
+    for (let row of gameRowObjects) {
+        if (row.filled === false) {
+            const rowTilesArray = [...document.querySelector(`.game-row${row.rowNumber}`).children];
+            for (let tile of rowTilesArray) {
+                if (tile.textContent === '') {
+                    tile.textContent = letter.dataset.key;
+                    break loop1;
                 }
             }
+        }
+    }
+}
+// keyboardButtonsArray.forEach((letter) => {
+//     letter.addEventListener('touchend', (e) => {
+//         displayTileLetter(letter);
+//         e.stopImmediatePropagation();
+//         // e.preventDefault();
+//     });
+// });
+keyboardButtonsArray.forEach((letter) => {
+    letter.addEventListener('click', (e) => {
+        displayTileLetter(letter);
+        e.stopImmediatePropagation();
     });
 });
 
