@@ -168,6 +168,7 @@ body.light {
             align-items: center;
             position: relative;
             min-height: 39px;
+            margin-bottom: 7px;
             h1 {
                 font-weight: 700;
                 font-size: 16px;
@@ -175,6 +176,26 @@ body.light {
                 text-transform: uppercase;
                 text-align: center;
                 // margin-bottom: 10px;
+            }
+        }
+        section {
+            padding: 16px;
+            padding-top: 0px;
+            .instructions {
+                font-size: 14px;
+                p {
+                    padding: 7px 0;
+                    line-height: 1.2em;
+                    span {
+                        font-weight: bold;
+                    }
+                }
+                .examples {
+                    margin-top: 8px;
+                    border: var(--section-border);
+                    border-left: transparent;
+                    border-right: transparent;
+                }
             }
         }
     }
@@ -252,17 +273,33 @@ body.light {
 }
 
 #close-help-menu-button {
-    font-size: 23px;
-    color: var(--text-color);
+    // font-size: 23px;
+    // color: var(--text-color);
+    width: 20px;
+    height: 20px;
     cursor: pointer;
     position: absolute;
     right: 0;
     user-select: none;
-    margin-top: -6px;
+    margin-top: -4px;
+    margin-right: 2px;
+    background-repeat:no-repeat;
+    background-position: center center;
+    background-size: 19px;
 }
-@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+body.dark {
     #close-help-menu-button {
-    padding: 0 16px;
+        background-image: url("../icons/close-menu-white.png");
+    }
+}
+body.light {
+    #close-help-menu-button {
+        background-image: url("../icons/close-menu-black.png");
+    }
+}
+@media only screen and (min-width: 320px) and (max-width: 480px) {
+    #close-help-menu-button {
+    margin-right: 18px;
     }
 }
 

@@ -6,6 +6,7 @@ body.dark {
     --dark-gray: #3A3A3C;
     --light-gray: #818384;
     --empty-tile-border-color: var(--dark-gray);
+    --section-border: 1px solid #3A3A3C;
     --yellow: #B59F3B;
     --green: #538D4E;
 }
@@ -17,6 +18,7 @@ body.light {
     --dark-gray: #787C7E;
     --light-gray: #D3D6DA;
     --empty-tile-border-color: var(--light-gray);
+    --section-border: 1px solid #D3D6DA;
     --yellow: #C9B458;
     --green: #6AAA64;
 }
