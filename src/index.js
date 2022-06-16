@@ -120,18 +120,11 @@ function checkForEmptyLSArray() {
 
 
 const GameRow = row => {
-    // let getElement = () => {
-    //     let element = document.querySelector(`.gameRow${rowNumber}`);
-    //     return element;
-    // }
     let rowNumber = row;
-    // let getTilesArray = () => {
-    //     const tilesArray = [...getElement().children];
-    //     return tilesArray;
-    // }
+    let rowWord = '';
     let filled = false;
     let isCurrentRow = false;
-    return {rowNumber, filled, isCurrentRow};
+    return {rowNumber, rowWord, filled, isCurrentRow};
 }
 const gameRow1Object = Object.create(GameRow('1'));
 gameRow1Object.isCurrentRow = true;
@@ -144,6 +137,7 @@ const gameRowObjects = [gameRow1Object, gameRow2Object, gameRow3Object, gameRow4
 
 const keyboardButtonsArray = [...document.querySelectorAll('.letter-button')];
 const enterButton = document.getElementById('enter-button');
+const deleteButton = document.getElementById('delete-button');
 
 const skipButton = document.getElementById('skip-button');
 
@@ -161,7 +155,26 @@ skipButton.addEventListener('click', () => {
 });
 
 
+function deleteLetter() {
+    loop1:
+    for (let row of gameRowObjects) {
+        if (row.isCurrentRow === true) {
+            const rowTilesArray = [...document.querySelector(`.game-row${row.rowNumber}`).children];
+            for (let i = rowTilesArray.length - 1; i >= 0; i--) {
+                if (rowTilesArray[i].textContent !== '') {
+                    row.rowWord = row.rowWord.slice(0, i);
+                    rowTilesArray[i].textContent = '';
+                    row.filled = false;
+                    break loop1;
+                }    
+            }
+        }
+    }        
+}
 
+deleteButton.addEventListener('click', () => {
+    deleteLetter();
+});
 
 
 //array of rows
@@ -176,9 +189,9 @@ function displayTileLetter(letter) {
             for (let tile of rowTilesArray) {
                 if (tile.textContent === '') {
                     tile.textContent = letter.dataset.key;
+                    row.rowWord += tile.textContent.toLowerCase();
                     if (tile === rowTilesArray[rowTilesArray.length - 1]) {
                         row.filled = true;
-                        
                     }
                     break loop1;
                 }
@@ -186,13 +199,7 @@ function displayTileLetter(letter) {
         }
     }
 }
-// keyboardButtonsArray.forEach((letter) => {
-//     letter.addEventListener('touchend', (e) => {
-//         displayTileLetter(letter);
-//         e.stopImmediatePropagation();
-//         // e.preventDefault();
-//     });
-// });
+
 keyboardButtonsArray.forEach((letter) => {
     letter.addEventListener('click', (e) => {
         displayTileLetter(letter);
@@ -201,7 +208,57 @@ keyboardButtonsArray.forEach((letter) => {
 });
 
 
+
+
+function submitIncompleteWord() {
+
+}
+
+function submitIncorrectWord() {
+
+}
+
+function submitWordNotInWordList() {
+
+}
+
+function submitCorrectWord() {
+
+}
+//not enough letters
+//not in word list
+//incorrect word
+//correct word
+
+
+function sumbitWord() {
+    gameRowObjects.forEach((row) => {
+        if (row.isCurrentRow) {
+            if (row.rowWord.length === 5) {
+                if (wordsSet.has(row.rowWord)) {
+                    if (row.rowWord === wordleGame.currentWord) {
+                        wordleGame.setNewGameWord();
+                        //display win modal
+                    }
+                    else {
+                        //incorrect word
+                    }
+                }
+                else {
+                    //not in word list
+                }
+            }
+            else {
+                //not enough letters
+                
+            }
+        }
+    });
+}
 //on enter click, if all tiles filled then mark row as filled
+enterButton.addEventListener('click', () => {
+    sumbitWord();
+});
 
 
 
