@@ -34,7 +34,6 @@ closeHelpMenuButton.addEventListener('click', () => {
 });
 
 
-//on page load - display instructions if local storage is empty
 
 
 
@@ -131,9 +130,11 @@ const GameRow = row => {
     //     return tilesArray;
     // }
     let filled = false;
-    return {rowNumber, filled};
+    let isCurrentRow = false;
+    return {rowNumber, filled, isCurrentRow};
 }
 const gameRow1Object = Object.create(GameRow('1'));
+gameRow1Object.isCurrentRow = true;
 const gameRow2Object = Object.create(GameRow('2'));
 const gameRow3Object = Object.create(GameRow('3'));
 const gameRow4Object = Object.create(GameRow('4'));
@@ -170,11 +171,15 @@ skipButton.addEventListener('click', () => {
 function displayTileLetter(letter) {
     loop1:
     for (let row of gameRowObjects) {
-        if (row.filled === false) {
+        if (row.filled === false && row.isCurrentRow === true) {
             const rowTilesArray = [...document.querySelector(`.game-row${row.rowNumber}`).children];
             for (let tile of rowTilesArray) {
                 if (tile.textContent === '') {
                     tile.textContent = letter.dataset.key;
+                    if (tile === rowTilesArray[rowTilesArray.length - 1]) {
+                        row.filled = true;
+                        
+                    }
                     break loop1;
                 }
             }
