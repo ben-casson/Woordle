@@ -548,6 +548,31 @@ body.light {
     z-index: 3000;
 }
 
+#skip-word-title {
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+#skip-word-text {
+    padding-bottom: 50px;
+    line-height: 1.2em;
+}
+
+#warning-text {
+    font-weight: 700;
+    // letter-spacing: 0.5px;
+}
+
+#skip-buttons-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
 #new-word-button {
     display: none;
 }
@@ -589,6 +614,15 @@ body.light {
     }
 }
 
+@media (max-width: 420px) {
+    #skip-yes-button,
+    #skip-no-button,
+    #new-word-button {
+        font-size: 14px;
+        padding: 10px 15px;
+    }
+}
+
 #statistics-content-container,
 #skip-word-content-container {
     width: calc(100vw - 36px);
@@ -598,6 +632,10 @@ body.light {
     border-radius: 8px;
     box-shadow: 0 4px 23px 0 rgba(0, 0, 0, 0.2);
     padding: 16px;
+}
+
+#skip-word-content-container {
+    padding: 26px;
 }
 
 #statistics-close-button {
