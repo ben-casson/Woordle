@@ -151,13 +151,27 @@ const skipButton = document.getElementById('skip-button');
 function skipWord() {
     wordleGame.setNewGameWord();
 }
+
+const skipWordModal = document.getElementById('skip-word-modal');
+const confirmSkipButton = document.getElementById('skip-yes-button');
+const cancelSkipButton = document.getElementById('skip-no-button');
+
+cancelSkipButton.addEventListener('click', () => {
+    skipWordModal.style.display = 'none';
+});
+
+confirmSkipButton.addEventListener('click', () => {
+    clearRows();
+    wordleGame.setNewGameWord();
+    skipWordModal.style.display = 'none';
+    //update stats
+});
+
 skipButton.addEventListener('click', () => {
-    skipWord();
+    // skipWord(); move to 'yes' button inside skip modal
     // console.log(wordleGame.getCurrentWord());
-
-    //display modal containing correct word and 'new wordle' button that closes modal
-
-    //mark all rows and tiles !filled
+    skipWordModal.style.display = 'flex';
+    
 });
 
 
@@ -218,14 +232,26 @@ function clearRows() {
     for (let row of gameRowObjects) {
         row.rowWord = '';
         row.filled = false;
+        row.isCurrentRow = false;
         const rowTilesArray = [...document.querySelector(`.game-row${row.rowNumber}`).children];
             for (let tile of rowTilesArray) {
                 tile.textContent = '';
             }
     }
+    gameRow1Object.isCurrentRow = true;
 }
 
+const statisticsButton = document.getElementById('statistics-button');
+const statisticsModal = document.getElementById('statistics-container');
+const statisticsCloseButton = document.getElementById('statistics-close-button');
 
+statisticsButton.addEventListener('click', () => {
+    statisticsModal.style.display = 'flex';
+});
+
+statisticsCloseButton.addEventListener('click', () => {
+    statisticsModal.style.display = 'none';
+});
 // function submitIncompleteWord() {
 
 // }
@@ -234,13 +260,10 @@ function clearRows() {
 
 // }
 
-// function submitWordNotInWordList() {
-
-// }
-
-// function submitCorrectWord() {
-
-// }
+function submitCorrectWord() {
+    //update stats
+    //display stats with 'new word' button
+}
 //not enough letters
 //not in word list
 //incorrect word
@@ -248,25 +271,38 @@ function clearRows() {
 
 
 function sumbitWord() {
+    loop1:
     for (let row of gameRowObjects) {
         if (row.isCurrentRow) {
             if (row.rowWord.length === 5) {
-                if (wordsSet.has(row.rowWord)) {
                     if (row.rowWord == wordleGame.getCurrentWord()) {
-                        wordleGame.setNewGameWord();
+                        //move wordleGame.setNewGameWord(); to new game button 
+                        //      on 'next' modal and 'win' modal
+                        wordleGame.setNewGameWord(); //---------
                         console.log('Winner winner chicken dinner!');
+                        //move clearRows(); to to new game button on 'next' modal and 'win' modal
                         clearRows();
-                        //display win modal
+                        //display win modal (either same as 'next' modal with different 
+                        //                  text but same new game button, or different 
+                        //                  modal with different new game button that has
+                        //                  same event listener)
                     }
                     else {
                         //incorrect word
                         console.log('incorrect word');
+                        for (let i = 0; i < gameRowObjects.length; i++) {
+                            if (i < 5) {
+                                if (gameRowObjects[i].isCurrentRow) {
+                                    gameRowObjects[i].isCurrentRow = false;
+                                    gameRowObjects[i + 1].isCurrentRow = true;
+                                    break loop1;
+                                }
+                            }
+                            else {
+                                //player loses game, display modal
+                            }
+                        }
                     }
-                }
-                else {
-                    //not in word list
-                    console.log('not in word list');
-                }
             }
             else {
                 //not enough letters
