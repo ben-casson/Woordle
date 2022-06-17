@@ -48,6 +48,9 @@ let wordsString = "Adult,Agent,Apple,Award,Basis,Beach,Birth,Block,Blood,Board,B
 
 let tempArray = wordsString.split(",");
 const wordsSet = new Set();
+wordsSet.forEach((word) => {
+    word = word.toLowerCase();
+});
 
 for (let word of tempArray) {
     if (word.length === 5 && !wordsSet.has(word)) {
@@ -97,6 +100,7 @@ const Game = () => {
         localStorage.setItem('newWordsArrayLS', JSON.stringify(newWordsArrayLS));
         oldWordsArrayLS.push(currentWord);
         localStorage.setItem('oldWordsArrayLS', JSON.stringify(oldWordsArrayLS));
+        console.log(currentWord);
     };
     const getCurrentWord = () => {
         return currentWord;
@@ -115,17 +119,18 @@ function checkForEmptyLSArray() {
         newWordsArrayLS = JSON.parse(localStorage.getItem('newWordsArrayLS'));
         oldWordsArrayLS = JSON.parse(localStorage.getItem('oldWordsArrayLS'));
         wordleGame.setNewGameWord();
-        // console.log(wordleGame.getCurrentWord());
+        console.log(wordleGame.getCurrentWord());
       }
 }
 
 
-const GameRow = row => {
-    let rowNumber = row;
+const GameRow = (number) => {
+    let rowElement = document.querySelector(`.game-row${number}`);
+    let rowNumber = number;
     let rowWord = '';
     let filled = false;
     let isCurrentRow = false;
-    return {rowNumber, rowWord, filled, isCurrentRow};
+    return {rowElement, rowNumber, rowWord, filled, isCurrentRow};
 }
 const gameRow1Object = Object.create(GameRow('1'));
 gameRow1Object.isCurrentRow = true;
@@ -190,7 +195,7 @@ function displayTileLetter(letter) {
             for (let tile of rowTilesArray) {
                 if (tile.textContent === '') {
                     tile.textContent = letter.dataset.key;
-                    row.rowWord += tile.textContent.toLowerCase();
+                    row.rowWord = "" + row.rowWord + letter.dataset.key.toLowerCase();
                     if (tile === rowTilesArray[rowTilesArray.length - 1]) {
                         row.filled = true;
                     }
@@ -209,23 +214,33 @@ keyboardButtonsArray.forEach((letter) => {
 });
 
 
-
-
-function submitIncompleteWord() {
-
+function clearRows() {
+    for (let row of gameRowObjects) {
+        row.rowWord = '';
+        row.filled = false;
+        const rowTilesArray = [...document.querySelector(`.game-row${row.rowNumber}`).children];
+            for (let tile of rowTilesArray) {
+                tile.textContent = '';
+            }
+    }
 }
 
-function submitIncorrectWord() {
 
-}
+// function submitIncompleteWord() {
 
-function submitWordNotInWordList() {
+// }
 
-}
+// function submitIncorrectWord() {
 
-function submitCorrectWord() {
+// }
 
-}
+// function submitWordNotInWordList() {
+
+// }
+
+// function submitCorrectWord() {
+
+// }
 //not enough letters
 //not in word list
 //incorrect word
@@ -233,32 +248,37 @@ function submitCorrectWord() {
 
 
 function sumbitWord() {
-    gameRowObjects.forEach((row) => {
+    for (let row of gameRowObjects) {
         if (row.isCurrentRow) {
             if (row.rowWord.length === 5) {
                 if (wordsSet.has(row.rowWord)) {
-                    if (row.rowWord === wordleGame.currentWord) {
+                    if (row.rowWord == wordleGame.getCurrentWord()) {
                         wordleGame.setNewGameWord();
+                        console.log('Winner winner chicken dinner!');
+                        clearRows();
                         //display win modal
                     }
                     else {
                         //incorrect word
+                        console.log('incorrect word');
                     }
                 }
                 else {
                     //not in word list
+                    console.log('not in word list');
                 }
             }
             else {
                 //not enough letters
-                
+                console.log('not enough letters');
             }
         }
-    });
+    }
 }
 //on enter click, if all tiles filled then mark row as filled
 enterButton.addEventListener('click', () => {
     sumbitWord();
+    console.log('Hello!');
 });
 
 

@@ -415,11 +415,13 @@ body.light {
         user-select: none;
         // aspect-ratio: 1 / 1;
 }
-@media (max-height: 670px) {
-    .row .tile {
-        
-    }
-}
+// @media (max-height: 670px) and (max-width: 350px) {
+//     .row .tile {
+//         //(100vw - 40px) / 5
+//         height: calc((100% - 40px) / 5);
+//         width: calc((100% - 40px) / 5);
+//     }
+// }
     // .tile::before {
     //     content: '';
     //     display: inline-block;
