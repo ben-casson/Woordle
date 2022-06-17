@@ -148,9 +148,9 @@ const deleteButton = document.getElementById('delete-button');
 const skipButton = document.getElementById('skip-button');
 
 //skip current word and use a new one
-function skipWord() {
-    wordleGame.setNewGameWord();
-}
+// function skipWord() {
+//     wordleGame.setNewGameWord();
+// }
 
 const skipWordModal = document.getElementById('skip-word-modal');
 const confirmSkipButton = document.getElementById('skip-yes-button');
@@ -244,12 +244,21 @@ function clearRows() {
 const statisticsButton = document.getElementById('statistics-button');
 const statisticsModal = document.getElementById('statistics-container');
 const statisticsCloseButton = document.getElementById('statistics-close-button');
+const newWordButton = document.getElementById('new-word-button');
 
 statisticsButton.addEventListener('click', () => {
+    newWordButton.style.display = 'none';
+    statisticsCloseButton.style.display = 'block';
     statisticsModal.style.display = 'flex';
 });
 
 statisticsCloseButton.addEventListener('click', () => {
+    statisticsModal.style.display = 'none';
+});
+
+newWordButton.addEventListener('click', () => {
+    clearRows();
+    wordleGame.setNewGameWord();
     statisticsModal.style.display = 'none';
 });
 // function submitIncompleteWord() {
@@ -263,6 +272,9 @@ statisticsCloseButton.addEventListener('click', () => {
 function submitCorrectWord() {
     //update stats
     //display stats with 'new word' button
+    newWordButton.style.display = 'block';
+    statisticsCloseButton.style.display = 'none';
+    statisticsModal.style.display = 'flex';
 }
 //not enough letters
 //not in word list
@@ -276,16 +288,9 @@ function sumbitWord() {
         if (row.isCurrentRow) {
             if (row.rowWord.length === 5) {
                     if (row.rowWord == wordleGame.getCurrentWord()) {
-                        //move wordleGame.setNewGameWord(); to new game button 
-                        //      on 'next' modal and 'win' modal
-                        wordleGame.setNewGameWord(); //---------
+                        //animate word then..
+                        submitCorrectWord();
                         console.log('Winner winner chicken dinner!');
-                        //move clearRows(); to to new game button on 'next' modal and 'win' modal
-                        clearRows();
-                        //display win modal (either same as 'next' modal with different 
-                        //                  text but same new game button, or different 
-                        //                  modal with different new game button that has
-                        //                  same event listener)
                     }
                     else {
                         //incorrect word
