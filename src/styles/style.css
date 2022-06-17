@@ -356,7 +356,6 @@ body.light #close-help-menu-button {
 }
 
 .gameboard-container {
-  grid-area: gameboard;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -386,7 +385,6 @@ body.light #close-help-menu-button {
       flex-shrink: 1;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  aspect-ratio: 6 / 5;
 }
 
 @media (max-width: 359px) {
@@ -431,6 +429,7 @@ body.light #close-help-menu-button {
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+  aspect-ratio: 1 / 1;
 }
 
 @media (min-height: 600px) {
@@ -450,7 +449,6 @@ body.light .row .tile[data-state="empty"] {
 
 .keyboard-container {
   height: 200px;
-  grid-area: keyboard;
   -ms-grid-column-align: center;
       justify-self: center;
   width: 100%;

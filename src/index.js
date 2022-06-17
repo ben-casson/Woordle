@@ -88,6 +88,7 @@ function fillNewWordsArrayLS() {
 
 const Game = () => {
     let currentWord = "";
+    // let currentRow = 
     const setNewGameWord = () => {
         if (newWordsArrayLS.length === 0) {
             fillNewWordsArrayLS();

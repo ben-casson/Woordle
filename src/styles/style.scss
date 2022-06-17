@@ -150,7 +150,7 @@ body.light {
     z-index: 2000;  
     .content {
         position: relative;
-        color: var(--color-tone-1);
+        color: var(--text-color);
         padding: 0 32px;
         max-width: 564px;
         // width: 100%;
@@ -303,6 +303,15 @@ body.light {
     }
 }
 
+#help-menu-new-game-text {
+    font-weight: 600;
+}
+
+#help-menu-next {
+    padding: 0 6px;
+    font-style: italic;
+}
+
 #game-container {
     // grid-area: game;
     // display: grid;
@@ -320,7 +329,6 @@ body.light {
 }
 
 .gameboard-container {
-    grid-area: gameboard;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -390,8 +398,7 @@ body.light {
 //     display: inline-block;
 //     padding-bottom: 100%;
 // }
-.row {
-    .tile {
+.row .tile {
         // width: 100%;
         // height: auto;
         display: inline-flex;
@@ -406,14 +413,19 @@ body.light {
         color: var(--tile-text-color);
         text-transform: uppercase;
         user-select: none;
-        aspect-ratio: 1 / 1;
+        // aspect-ratio: 1 / 1;
+}
+@media (max-height: 670px) {
+    .row .tile {
+        
     }
+}
     // .tile::before {
     //     content: '';
     //     display: inline-block;
     //     padding-bottom: 100%;
     // }
-}
+
 @media (min-height: 600px) {
     .row {
         .tile {
@@ -436,7 +448,6 @@ body.light {
 
 .keyboard-container {
     height: 200px;
-    grid-area: keyboard;
     justify-self: center;
     width: 100%;
     // max-width: 500px;
