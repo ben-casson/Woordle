@@ -281,15 +281,33 @@ function submitCorrectWord() {
 //incorrect word
 //correct word
 
+function timeout(tiles) {
+    setTimeout(function() {
+        // Do Something Here
+        // Then recall the parent function to
+        // create a recursive loop.
+        tiles.classList.add('win');
+        timeout(tiles);
+    }, 100);
+}
 
 function sumbitWord() {
     loop1:
     for (let row of gameRowObjects) {
         if (row.isCurrentRow) {
+            const rowTilesArray = [...document.querySelector(`.game-row${row.rowNumber}`).children];
             if (row.rowWord.length === 5) {
                     if (row.rowWord == wordleGame.getCurrentWord()) {
                         //animate word then..
-                        submitCorrectWord();
+                        for (let tile of rowTilesArray) {
+                            tile.classList.remove('win');
+                        } 
+                        setTimeout(function() {
+                            for (let tiles of rowTilesArray) {
+                                timeout(tiles);
+                            }   
+                        }, 10);
+                        setTimeout(submitCorrectWord(), 2000);
                         console.log('Winner winner chicken dinner!');
                     }
                     else {
@@ -311,7 +329,16 @@ function sumbitWord() {
             }
             else {
                 //not enough letters
-                console.log('not enough letters');
+                for (let tile of rowTilesArray) {
+                    tile.classList.remove('incorrect');
+                } 
+                setTimeout(function() {
+                    for (let tiles of rowTilesArray) {
+                        tiles.classList.add('incorrect');
+                    }   
+                }, 10);
+                      
+                
             }
         }
     }
@@ -319,7 +346,6 @@ function sumbitWord() {
 //on enter click, if all tiles filled then mark row as filled
 enterButton.addEventListener('click', () => {
     sumbitWord();
-    console.log('Hello!');
 });
 
 
