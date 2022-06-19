@@ -101,6 +101,7 @@ const Game = () => {
         oldWordsArrayLS.push(currentWord);
         localStorage.setItem('oldWordsArrayLS', JSON.stringify(oldWordsArrayLS));
         console.log(currentWord);
+        removeTileAnimationClasses();
     };
     const getCurrentWord = () => {
         return currentWord;
@@ -247,19 +248,30 @@ const statisticsCloseButton = document.getElementById('statistics-close-button')
 const newWordButton = document.getElementById('new-word-button');
 
 statisticsButton.addEventListener('click', () => {
+    // statisticsModal.style.display = 'flex';
+    statisticsModal.classList.remove('close');
+    statisticsModal.classList.add('open');
     newWordButton.style.display = 'none';
-    statisticsCloseButton.style.display = 'block';
-    statisticsModal.style.display = 'flex';
+    setTimeout(() => {
+        statisticsCloseButton.style.display = 'block';
+    }, 225);
 });
 
 statisticsCloseButton.addEventListener('click', () => {
-    statisticsModal.style.display = 'none';
+    // statisticsModal.style.display = 'none';
+    statisticsModal.classList.add('close');
+    setTimeout(() => {
+        statisticsModal.classList.remove('open');
+    }, 200);
 });
 
 newWordButton.addEventListener('click', () => {
     clearRows();
     wordleGame.setNewGameWord();
-    statisticsModal.style.display = 'none';
+    statisticsModal.classList.add('close');
+    setTimeout(() => {
+        statisticsModal.classList.remove('open');
+    }, 200);
 });
 // function submitIncompleteWord() {
 
@@ -272,23 +284,28 @@ newWordButton.addEventListener('click', () => {
 function submitCorrectWord() {
     //update stats
     //display stats with 'new word' button
-    newWordButton.style.display = 'block';
-    statisticsCloseButton.style.display = 'none';
-    statisticsModal.style.display = 'flex';
+    setTimeout(() => {
+        statisticsCloseButton.style.display = 'none';
+        statisticsModal.classList.remove('close');
+        statisticsModal.classList.add('open');
+        setTimeout(() => {
+            newWordButton.style.display = 'block';
+        }, 225);
+    }, 2000);
 }
 //not enough letters
 //not in word list
 //incorrect word
 //correct word
 
-function timeout(tiles) {
-    setTimeout(function() {
-        // Do Something Here
-        // Then recall the parent function to
-        // create a recursive loop.
-        tiles.classList.add('win');
-        timeout(tiles);
-    }, 100);
+function removeTileAnimationClasses() {
+    for (let row of gameRowObjects) {
+        const rowTilesArray = [...document.querySelector(`.game-row${row.rowNumber}`).children];
+        for (let tile of rowTilesArray) {
+            tile.classList.remove('win');
+            tile.classList.remove('incorrect');
+        } 
+    }
 }
 
 function sumbitWord() {
@@ -301,13 +318,13 @@ function sumbitWord() {
                         //animate word then..
                         for (let tile of rowTilesArray) {
                             tile.classList.remove('win');
+                            tile.classList.remove('incorrect');
                         } 
-                        setTimeout(function() {
-                            for (let tiles of rowTilesArray) {
-                                timeout(tiles);
-                            }   
-                        }, 10);
-                        setTimeout(submitCorrectWord(), 2000);
+                        for (let tile of rowTilesArray) {
+                            tile.classList.add('win');
+                            console.log('hi');
+                        } 
+                        submitCorrectWord();
                         console.log('Winner winner chicken dinner!');
                     }
                     else {
