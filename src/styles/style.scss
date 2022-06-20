@@ -192,6 +192,8 @@ body.light {
                     }
                 }
                 .examples {
+                    // padding-top: 10px;
+                    padding-bottom: 1px;
                     margin-top: 8px;
                     border: var(--section-border);
                     border-left: transparent;
@@ -200,6 +202,22 @@ body.light {
             }
         }
     }
+}
+
+.examples p {
+    font-weight: bold;
+    margin-top: 6px;
+    margin-bottom: 18px;
+}
+
+.example p {
+    font-weight: 400;
+    margin-top: 7px;
+    margin-bottom: 17px;
+}
+
+.example-tile {
+    border: 2px solid var(--gray);
 }
 
 
@@ -235,8 +253,8 @@ body.light {
 
 
 .example-tile {
-    height: 44px;
-    width: 44px;
+    height: 40px;
+    width: 40px;
 }
 
 .example-animate.flip-in {
@@ -245,6 +263,14 @@ body.light {
     animation-timing-function: ease-in;
     animation-delay: 225ms;
     animation-fill-mode: forwards;
+}
+
+.example-animate.animated {
+    border: none !important;
+}
+
+.bold-text {
+    font-weight: bold;
 }
 
 
@@ -352,6 +378,7 @@ body.light {
 
 #help-menu-new-game-text {
     font-weight: 600;
+    margin-top: 7px;
 }
 
 #help-menu-next {
@@ -491,8 +518,11 @@ body.light {
         text-transform: uppercase;
         user-select: none;
         background-color: var(--background-color);
-        border: 2px solid var(--empty-tile-border-color);
         // aspect-ratio: 1 / 1;
+}
+
+.gameboard .row .tile {
+    border: 2px solid var(--empty-tile-border-color);
 }
 
 .row .tile.incorrect {

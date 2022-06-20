@@ -14,6 +14,7 @@ const closeHelpMenuButton = document.getElementById('close-help-menu-button');
 const helpMenuExampleAnimationArray = [...document.querySelectorAll('.example-animate')];
 const exampleLetterCorrect = document.getElementById('example-letter-correct');
 const exampleLetterWrongSpot = document.getElementById('example-letter-wrong-spot');
+const exampleLetterIncorrect = document.getElementById('example-letter-incorrect');
 
 function openHelpMenu() {
     helpMenuContainer.classList.add('open');
@@ -21,6 +22,36 @@ function openHelpMenu() {
 
 function closeHelpMenu() {
     helpMenuContainer.classList.remove('open');
+}
+
+function makeTileGreen(tile) {
+    if (document.body.classList.contains('dark')) {
+        tile.style.backgroundColor = '#538D4E';
+    }
+    else {
+        tile.style.backgroundColor = '#6AAA64';
+    }
+    tile.classList.add('animated');
+}
+
+function makeTileYellow(tile) {
+    if (document.body.classList.contains('dark')) {
+        tile.style.backgroundColor = '#B59F3B';
+    }
+    else {
+        tile.style.backgroundColor = '#C9B458';
+    }
+    tile.classList.add('animated');
+}
+
+function makeTileGray(tile) {
+    if (document.body.classList.contains('dark')) {
+        tile.style.backgroundColor = '#3A3A3C';
+    }
+    else {
+        tile.style.backgroundColor = '#787C7E';
+    }
+    tile.classList.add('animated');
 }
 
 helpButton.addEventListener('click', () => {
@@ -31,18 +62,9 @@ helpButton.addEventListener('click', () => {
         example.classList.add('flip-in');
     }
     setTimeout(() => {
-        if (document.body.classList.contains('dark')) {
-            exampleLetterCorrect.style.backgroundColor = '#538D4E';
-            exampleLetterWrongSpot.style.backgroundColor = '#B59F3B';
-            document.getElementById('example-letter-incorrect').style.backgroundColor = '#3A3A3C';
-        }
-        else {
-            exampleLetterCorrect.style.backgroundColor = '#6AAA64';
-            exampleLetterWrongSpot.style.backgroundColor = '#C9B458';
-            document.getElementById('example-letter-incorrect').style.backgroundColor = '#787C7E';
-        }
-        exampleLetterCorrect.style.border = 'none';
-        exampleLetterWrongSpot.style.border = 'none';
+        makeTileGreen(exampleLetterCorrect);
+        makeTileYellow(exampleLetterWrongSpot);
+        makeTileGray(exampleLetterIncorrect);
     }, 500);
 });
 
@@ -54,6 +76,12 @@ closeHelpMenuButton.addEventListener('click', () => {
             example.classList.remove('flip-in');
             example.classList.remove('flip-out');
         }
+        exampleLetterCorrect.style.backgroundColor = 'transparent';
+        exampleLetterCorrect.classList.remove('animated');
+        exampleLetterWrongSpot.style.backgroundColor = 'transparent';
+        exampleLetterWrongSpot.classList.remove('animated');
+        exampleLetterIncorrect.style.backgroundColor = 'transparent';
+        exampleLetterIncorrect.classList.remove('animated');
     }, 200);
 });
 
