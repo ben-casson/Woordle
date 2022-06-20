@@ -5,6 +5,7 @@ body.dark {
     --icon-color: #fff;
     --dark-gray: #3A3A3C;
     --light-gray: #818384;
+    --gray: #565758;
     --empty-tile-border-color: var(--dark-gray);
     --section-border: 1px solid #3A3A3C;
     --yellow: #B59F3B;
@@ -17,6 +18,7 @@ body.light {
     --icon-color: #000;
     --dark-gray: #787C7E;
     --light-gray: #D3D6DA;
+    --gray: #878a8c;
     --empty-tile-border-color: var(--light-gray);
     --section-border: 1px solid #D3D6DA;
     --yellow: #C9B458;

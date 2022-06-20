@@ -415,7 +415,19 @@ body.light {
     100% {
       transform: translateY(0);
     }
-  }
+}
+
+@keyframes PopIn {
+    from {
+      transform: scale(0.8);
+      opacity: 0;
+    }
+
+    40% {
+      transform: scale(1.1);
+      opacity: 1;
+    }
+}
 
 .row .tile {
         // width: 100%;
@@ -432,12 +444,19 @@ body.light {
         color: var(--tile-text-color);
         text-transform: uppercase;
         user-select: none;
+        background-color: var(--background-color);
+        border: 2px solid var(--empty-tile-border-color);
         // aspect-ratio: 1 / 1;
 }
 
 .row .tile.incorrect {
     animation-name: Shake;
     animation-duration: 600ms;
+}
+
+.row .tile.popIn {
+    animation-name: PopIn;
+    animation-duration: 100ms;
 }
 
 .row div:nth-child(1).win {
@@ -478,18 +497,20 @@ body.light {
     }
 }
 
-body.dark {
-    .row .tile[data-state="empty"] {
-        border: 2px solid var(--dark-gray);
-    }    
-}
-body.light {
-    .row .tile[data-state="empty"] {
-        border: 2px solid var(--light-gray);
-    }    
-}
+// body.dark {
+//     .row .tile {
+//         border: 2px solid var(--dark-gray);
+//     }    
+// }
+// body.light {
+//     .row .tile {
+//         border: 2px solid var(--light-gray);
+//     }    
+// }
 
-
+.row .tile.active-tile {
+    border-color: var(--gray);
+}
 
 .keyboard-container {
     height: 200px;
