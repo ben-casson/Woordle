@@ -11,6 +11,9 @@ themeButton.addEventListener('click', () => {
 const helpButton = document.getElementById('help-button');
 const helpMenuContainer = document.getElementById('help-container');
 const closeHelpMenuButton = document.getElementById('close-help-menu-button');
+const helpMenuExampleAnimationArray = [...document.querySelectorAll('.example-animate')];
+const exampleLetterCorrect = document.getElementById('example-letter-correct');
+const exampleLetterWrongSpot = document.getElementById('example-letter-wrong-spot');
 
 function openHelpMenu() {
     helpMenuContainer.classList.add('open');
@@ -23,14 +26,35 @@ function closeHelpMenu() {
 helpButton.addEventListener('click', () => {
     helpMenuContainer.classList.remove('fadeout');
     openHelpMenu();
+    for (let example of helpMenuExampleAnimationArray) {
+        example.classList.add('flip-out');
+        example.classList.add('flip-in');
+    }
+    setTimeout(() => {
+        if (document.body.classList.contains('dark')) {
+            exampleLetterCorrect.style.backgroundColor = '#538D4E';
+            exampleLetterWrongSpot.style.backgroundColor = '#B59F3B';
+            document.getElementById('example-letter-incorrect').style.backgroundColor = '#3A3A3C';
+        }
+        else {
+            exampleLetterCorrect.style.backgroundColor = '#6AAA64';
+            exampleLetterWrongSpot.style.backgroundColor = '#C9B458';
+            document.getElementById('example-letter-incorrect').style.backgroundColor = '#787C7E';
+        }
+        exampleLetterCorrect.style.border = 'none';
+        exampleLetterWrongSpot.style.border = 'none';
+    }, 500);
 });
 
 closeHelpMenuButton.addEventListener('click', () => {
     helpMenuContainer.classList.add('fadeout');
     setTimeout(() => {
         closeHelpMenu();
+        for (let example of helpMenuExampleAnimationArray) {
+            example.classList.remove('flip-in');
+            example.classList.remove('flip-out');
+        }
     }, 200);
-    //add fadeout class
 });
 
 
@@ -86,6 +110,9 @@ const Game = () => {
     let currentWord = "";
     // let currentRow = 
     const setNewGameWord = () => {
+        for (let i in correctWordTileArray) {
+            correctWordTileArray[i].innerHTML = currentWord.toUpperCase().charAt(i);
+        }
         if (newWordsArrayLS.length === 0) {
             fillNewWordsArrayLS();
         }
@@ -95,9 +122,6 @@ const Game = () => {
         localStorage.setItem('oldWordsArrayLS', JSON.stringify(oldWordsArrayLS));
         console.log(currentWord);
         removeTileAnimationClasses();
-        for (let i in correctWordTileArray) {
-            correctWordTileArray[i].innerHTML = currentWord.toUpperCase().charAt(i);
-        }
     };
     const getCurrentWord = () => {
         return currentWord;
