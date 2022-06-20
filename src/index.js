@@ -16,8 +16,29 @@ const exampleLetterCorrect = document.getElementById('example-letter-correct');
 const exampleLetterWrongSpot = document.getElementById('example-letter-wrong-spot');
 const exampleLetterIncorrect = document.getElementById('example-letter-incorrect');
 
+const correctWordTile = document.querySelectorAll('.correct-word-tile');
+const correctWordTileArray = [...correctWordTile];
+
+function makeTileLetterBlack(tile) {
+    if (document.body.classList.contains('light')) {
+        tile.style.color = 'black';
+    }
+}
+
 function openHelpMenu() {
     helpMenuContainer.classList.add('open');
+    helpMenuExampleAnimationArray.forEach((tile) => {
+        makeTileLetterBlack(tile);
+    });
+    for (let example of helpMenuExampleAnimationArray) {
+        example.classList.add('flip-out');
+        example.classList.add('flip-in');
+    }
+    setTimeout(() => {
+        makeTileGreen(exampleLetterCorrect);
+        makeTileYellow(exampleLetterWrongSpot);
+        makeTileGray(exampleLetterIncorrect);
+    }, 500);
 }
 
 function closeHelpMenu() {
@@ -31,6 +52,7 @@ function makeTileGreen(tile) {
     else {
         tile.style.backgroundColor = '#6AAA64';
     }
+    tile.style.color = 'white';
     tile.classList.add('animated');
 }
 
@@ -41,6 +63,7 @@ function makeTileYellow(tile) {
     else {
         tile.style.backgroundColor = '#C9B458';
     }
+    tile.style.color = 'white';
     tile.classList.add('animated');
 }
 
@@ -51,21 +74,13 @@ function makeTileGray(tile) {
     else {
         tile.style.backgroundColor = '#787C7E';
     }
+    tile.style.color = 'white';
     tile.classList.add('animated');
 }
 
 helpButton.addEventListener('click', () => {
     helpMenuContainer.classList.remove('fadeout');
     openHelpMenu();
-    for (let example of helpMenuExampleAnimationArray) {
-        example.classList.add('flip-out');
-        example.classList.add('flip-in');
-    }
-    setTimeout(() => {
-        makeTileGreen(exampleLetterCorrect);
-        makeTileYellow(exampleLetterWrongSpot);
-        makeTileGray(exampleLetterIncorrect);
-    }, 500);
 });
 
 closeHelpMenuButton.addEventListener('click', () => {
@@ -131,8 +146,7 @@ function fillNewWordsArrayLS() {
     localStorage.setItem('oldWordsArrayLS', JSON.stringify(oldWordsArrayLS));
 }
 
-const correctWordTile = document.querySelectorAll('.correct-word-tile');
-const correctWordTileArray = [...correctWordTile];
+
 
 const Game = () => {
     let currentWord = "";
@@ -168,6 +182,9 @@ function checkForEmptyLSArray() {
         newWordsArrayLS = JSON.parse(localStorage.getItem('newWordsArrayLS'));
         oldWordsArrayLS = JSON.parse(localStorage.getItem('oldWordsArrayLS'));
         wordleGame.setNewGameWord();
+        for (let i in correctWordTileArray) {
+            correctWordTileArray[i].innerHTML = wordleGame.currentWord.toUpperCase().charAt(i);
+        }
         console.log(wordleGame.getCurrentWord());
       }
 }
@@ -221,7 +238,7 @@ function skipWord() {
     }
     setTimeout(() => {
         clearRows();
-        wordleGame.setNewGameWord();
+        // wordleGame.setNewGameWord();
         skipWordModal.style.display = 'none';
         // correctWordTileCover.classList.remove('remove-cover');
         for (let i = 0; i < 5; i++) {
