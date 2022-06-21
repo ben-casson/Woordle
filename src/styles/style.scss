@@ -245,12 +245,15 @@ body.light {
     width: 40px;
 }
 
-.example-animate.flip-in {
+.flip-in {
     animation-name: Flip;
     animation-duration: 500ms;
     animation-timing-function: ease-in;
-    animation-delay: 225ms;
     animation-fill-mode: forwards;
+}
+
+.example-animate.flip-in {
+    animation-delay: 225ms;
 }
 
 .example-animate.animated {
@@ -494,6 +497,88 @@ body.light {
     border: 2px solid var(--empty-tile-border-color);
 }
 
+
+
+@keyframes TurnGreen {
+    0% {
+        background-color: transparent;
+    }
+    99% {
+        background-color: transparent;
+    }
+    100% {
+        background-color: var(--green);
+    }
+}
+@keyframes TurnYellow {
+    0% {
+        background-color: transparent;
+    }
+    99% {
+        background-color: transparent;
+    }
+    100% {
+        background-color: var(--yellow);
+    }
+}
+@keyframes TurnGray {
+    0% {
+        background-color: transparent;
+    }
+    99% {
+        background-color: transparent;
+    }
+    100% {
+        background-color: var(--gray);
+    }
+}
+
+// .turn-green,
+// .turn-yellow,
+// .turn-gray {
+//     animation: name duration timing-function delay iteration-count direction fill-mode;
+//     animation-duration: 250ms;
+//     animation-fill-mode: forwards;
+// }
+
+// .turn-green {
+//     animation-name: TurnGreen;
+//     animation: TurnGreen 250 linear delay iteration-count direction fill-mode;
+// }
+
+// .turn-yellow {
+//     animation-name: TurnYellow;
+// }
+
+// .turn-gray {
+//     animation-name: TurnGray;
+// }
+// .gameboard .row .tile:nth-child(1).turn-green,
+// .gameboard .row .tile:nth-child(1).turn-yellow,
+// .gameboard .row .tile:nth-child(1).turn-gray {
+//     animation-delay: 0ms;
+// }
+// .gameboard .row .tile:nth-child(2).turn-green,
+// .gameboard .row .tile:nth-child(2).turn-yellow,
+// .gameboard .row .tile:nth-child(2).turn-gray {
+//     animation-delay: 500ms;
+// }
+// .gameboard .row .tile:nth-child(3).turn-green,
+// .gameboard .row .tile:nth-child(3).turn-yellow,
+// .gameboard .row .tile:nth-child(3).turn-gray  {
+//     animation-delay: 1000ms;
+// }
+// .gameboard .row .tile:nth-child(4).turn-green,
+// .gameboard .row .tile:nth-child(4).turn-yellow,
+// .gameboard .row .tile:nth-child(4).turn-gray  {
+//     animation-delay: 1500ms;
+// }
+// .gameboard .row .tile:nth-child(5).turn-green,
+// .gameboard .row .tile:nth-child(5).turn-yellow,
+// .gameboard .row .tile:nth-child(5).turn-gray  {
+//     animation-delay: 2000ms;
+// }
+
 .row .tile.incorrect {
     animation-name: Shake;
     animation-duration: 600ms;
@@ -505,33 +590,65 @@ body.light {
 }
 
 .row div:nth-child(1).win {
-    animation-name: Bounce;
-    animation-duration: 1000ms;
+    animation: Bounce 1000ms linear 2500ms 1 normal forwards;
+    animation: Flip 500ms linear 0ms 1 normal forwards;
+    // animation-duration: 1000ms;
+    // // animation-delay: 2500ms;
 }
 
 .row div:nth-child(2).win {
-    animation-name: Bounce;
-    animation-duration: 1000ms;
-    animation-delay: 200ms;
+    animation: Bounce 1000ms linear 2700ms 1 normal forwards;
+    animation: Flip 500ms linear 500ms 1 normal forwards;
+    // animation-duration: 1000ms;
+    // animation-delay: 200ms;
 }
 
 .row div:nth-child(3).win {
-    animation-name: Bounce;
-    animation-duration: 1000ms;
-    animation-delay: 400ms;
+    animation: Bounce 1000ms linear 2900ms 1 normal forwards;
+    animation: Flip 500ms linear 1000ms 1 normal forwards;
+    // animation-duration: 1000ms;
+    // animation-delay: 400ms;
 }
 
 .row div:nth-child(4).win {
-    animation-name: Bounce;
-    animation-duration: 1000ms;
-    animation-delay: 600ms;
+    animation: Bounce 1000ms linear 3100ms 1 normal forwards;
+    animation: Flip 500ms linear 1500ms 1 normal forwards;
+    // animation-duration: 1000ms;
+    // animation-delay: 600ms;
 }
 
 .row div:nth-child(5).win {
-    animation-name: Bounce;
-    animation-duration: 1000ms;
-    animation-delay: 800ms;
+    animation: Flip 500ms linear 2000ms 1 normal forwards;
+    animation: Bounce 1000ms linear 3300ms 1 normal forwards;
+    // animation-duration: 1000ms;
+    // animation-delay: 800ms;
 }
+
+// .gameboard .row .tile.flip-in {
+//     animation: Flip;
+//     animation-duration: 500ms;
+// }
+
+
+// .gameboard .row .flip-in:nth-child(1) {
+//     animation: Flip;
+// }
+// .gameboard .row .flip-in:nth-child(2) {
+//     animation: Flip;
+//     animation-delay: 500ms;
+// }
+// .gameboard .row .flip-in:nth-child(3) {
+//     animation: Flip;
+//     animation-delay: 1000ms;
+// }
+// .gameboard .row .flip-in:nth-child(4) {
+//     animation: Flip;
+//     animation-delay: 1500ms;
+// }
+// .gameboard .row .flip-in:nth-child(5) {
+//     animation: Flip;
+//     animation-delay: 2000ms;
+// }
 
 @media (min-height: 600px) {
     .row {
