@@ -239,6 +239,7 @@ function skipWord() {
     }
     setTimeout(() => {
         clearRows();
+        removeKeyboardButtonColor();
         // wordleGame.setNewGameWord();
         skipWordModal.style.display = 'none';
         // correctWordTileCover.classList.remove('remove-cover');
@@ -394,6 +395,7 @@ statisticsCloseButton.addEventListener('click', () => {
 
 newWordButton.addEventListener('click', () => {
     clearRows();
+    removeKeyboardButtonColor();
     wordleGame.setNewGameWord();
     statisticsModal.classList.add('close');
     setTimeout(() => {
@@ -447,15 +449,43 @@ function removeTileAnimationClasses() {
     }
 }
 
+function addKeyboardButtonColor(tile, color) {
+    for (let key of keyboardButtonsArray) {
+        if (key.innerHTML == tile.innerHTML.toUpperCase()) {
+            setTimeout(key.classList.add('white-text'), 1100);
+            if (color == 'yellow' && key.classList.contains('green-background')) {
+                continue;
+            }
+            else {
+                //yellow class overrides green in css due to cascading 
+                key.classList.remove(`yellow-background`);
+                setTimeout(key.classList.add(`${color}-background`), 1100);
+            }
+        }
+    }
+}
+
+function removeKeyboardButtonColor() {
+    for (let key of keyboardButtonsArray) {
+            key.classList.remove(`green-background`);
+            key.classList.remove(`yellow-background`);
+            key.classList.remove(`dark-gray-background`);
+            key.classList.remove('white-text');
+    }
+}
+
 function flipSubmittedTile(tile, number) {
         if (tile.innerHTML === oldWordsArrayLS[oldWordsArrayLS.length - 1].charAt(number)) {
             tile.classList.add('green-background');
+            addKeyboardButtonColor(tile, 'green');
         }
         else if (oldWordsArrayLS[oldWordsArrayLS.length - 1].includes(tile.innerHTML)) {
             tile.classList.add('yellow-background');
+            addKeyboardButtonColor(tile, 'yellow');
         }
         else {
             tile.classList.add('dark-gray-background');
+            addKeyboardButtonColor(tile, 'dark-gray');
         }
         tile.classList.remove('default-text-color');
         tile.classList.add('white-text');
