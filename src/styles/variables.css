@@ -10,6 +10,8 @@ body.dark {
     --section-border: 1px solid #3A3A3C;
     --yellow: #B59F3B;
     --green: #538D4E;
+    --disabled-button-background-color: #1E1E1E;
+    --disabled-button-color: #606060;
 }
 body.light {
     --background-color: #fff;
@@ -23,4 +25,6 @@ body.light {
     --section-border: 1px solid #D3D6DA;
     --yellow: #C9B458;
     --green: #6AAA64;
+    --disabled-button-background-color: #C9CBCC;
+    --disabled-button-color: #ececec;
 }

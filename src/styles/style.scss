@@ -837,6 +837,12 @@ body.light {
     gap: 15px;
 }
 
+.disabled-button {
+    cursor: default !important;
+    background-color: var(--disabled-button-background-color) !important;
+    color: var(--disabled-button-color) !important;
+}
+
 #new-word-button {
     display: none;
 }

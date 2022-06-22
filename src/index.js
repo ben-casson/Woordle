@@ -240,6 +240,9 @@ function skipWord() {
     setTimeout(() => {
         clearRows();
         removeKeyboardButtonColor();
+        // confirmSkipButton.disabled = false;
+        enableButton(confirmSkipButton);
+        enableButton(cancelSkipButton);
         // wordleGame.setNewGameWord();
         skipWordModal.style.display = 'none';
         // correctWordTileCover.classList.remove('remove-cover');
@@ -265,6 +268,16 @@ function skipWord() {
     }, 3500);
 }
 
+function disableButton(button) {
+    button.disabled = true;
+    button.classList.add('disabled-button');
+}
+
+function enableButton(button) {
+    button.disabled = false;
+    button.classList.remove('disabled-button');
+}
+
 confirmSkipButton.addEventListener('click', () => {
     // clearRows();
     // skipWordModal.style.display = 'none';
@@ -272,6 +285,10 @@ confirmSkipButton.addEventListener('click', () => {
     //         correctWordTileArray[i].innerHTML = wordleGame.getCurrentWord().toUpperCase().charAt(i);
     // }
     wordleGame.setNewGameWord();
+    disableButton(confirmSkipButton);
+    disableButton(cancelSkipButton);
+    // confirmSkipButton.disabled = true;
+    // cancelSkipButton.disabled = true;
     skipWord();
     //update stats
 });
@@ -457,7 +474,7 @@ function addKeyboardButtonColor(tile, color) {
                 continue;
             }
             else {
-                //yellow class overrides green in css due to cascading 
+                //remove yellow class because it overrides green class in css due to cascading 
                 key.classList.remove(`yellow-background`);
                 setTimeout(key.classList.add(`${color}-background`), 1100);
             }
