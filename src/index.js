@@ -251,6 +251,21 @@ function skipWord() {
             correctWordTileArrayCover[i].classList.remove('remove-cover');
             correctWordTileArray[i].classList.remove('bounce');
         }
+        [...document.querySelectorAll('.game-tile')].forEach((tile) => {
+            tile.style.backgroundColor = 'transparent';
+            if (document.body.classList.contains('dark')) {
+                tile.style.color = 'white';
+                // tile.style.border = '2px solid #3A3A3C';
+            }
+            else {
+                tile.style.color = 'black';
+                // tile.style.border = '2px solid #D3D6DA';
+            }
+            tile.classList.add('empty-tile');
+            tile.classList.remove('white-text');
+            tile.classList.remove('no-border');
+            tile.classList.add('default-text-color');
+        });
     }, 3500);
 }
 
@@ -301,6 +316,7 @@ deleteButton.addEventListener('click', () => {
 
 function animateSelectedLetter(tile) {
     tile.classList.add('popIn');
+    tile.style.animation = 'PopIn 100ms linear 0ms 1 normal forwards';
     setTimeout(() => {
         tile.classList.remove('popIn');
         tile.classList.add('active-tile');  
@@ -317,6 +333,7 @@ function displayTileLetter(letter) {
                 removeTileAnimationClasses();
                 if (tile.textContent === '') {
                     tile.textContent = letter.dataset.key;
+                    tile.classList.remove('empty-tile');
                     animateSelectedLetter(tile);
                     row.rowWord = "" + row.rowWord + letter.dataset.key.toLowerCase();
                     if (tile === rowTilesArray[rowTilesArray.length - 1]) {
@@ -346,6 +363,9 @@ function clearRows() {
             for (let tile of rowTilesArray) {
                 tile.textContent = '';
                 tile.classList.remove('active-tile');
+                tile.classList.remove('green-background');
+                tile.classList.remove('yellow-background');
+                tile.classList.remove('dark-gray-background');
             }
     }
     gameRow1Object.isCurrentRow = true;
@@ -381,7 +401,22 @@ newWordButton.addEventListener('click', () => {
     setTimeout(() => {
         statisticsModal.classList.remove('open');
     }, 200);
-    removeTileAnimationClasses();
+    // removeTileAnimationClasses();
+    [...document.querySelectorAll('.game-tile')].forEach((tile) => {
+        tile.style.backgroundColor = 'transparent';
+        if (document.body.classList.contains('dark')) {
+            tile.style.color = 'white';
+            // tile.style.border = '2px solid #3A3A3C';
+        }
+        else {
+            tile.style.color = 'black';
+            // tile.style.border = '2px solid #D3D6DA';
+        }
+        tile.classList.add('empty-tile');
+        tile.classList.remove('white-text');
+        tile.classList.remove('no-border');
+        tile.classList.add('default-text-color');
+    });
 });
 // function submitIncompleteWord() {
 
@@ -401,7 +436,7 @@ function submitCorrectWord() {
         setTimeout(() => {
             newWordButton.style.display = 'block';
         }, 225);
-    }, 5000);
+    }, 3000);
 }
 
 function removeTileAnimationClasses() {
@@ -416,30 +451,36 @@ function removeTileAnimationClasses() {
 
 function flipSubmittedTile(tile, number) {
         if (tile.innerHTML === oldWordsArrayLS[oldWordsArrayLS.length - 1].charAt(number)) {
-            // tiles[j].classList.add('turn-green');
-            if (document.body.classList.contains('dark')) {
-                tile.style.backgroundColor = '#538D4E';
-            }
-            else {
-                tile.style.backgroundColor = '#6AAA64';
-            }
+            // if (document.body.classList.contains('dark')) {
+            //     tile.style.backgroundColor = '#538D4E';
+            // }
+            // else {
+            //     tile.style.backgroundColor = '#6AAA64';
+            // }
+            tile.classList.add('green-background');
         }
         else if (oldWordsArrayLS[oldWordsArrayLS.length - 1].includes(tile.innerHTML)) {
-            if (document.body.classList.contains('dark')) {
-                tile.style.backgroundColor = '#B59F3B';
-            }
-            else {
-                tile.style.backgroundColor = '#C9B458';
-            }
+            // if (document.body.classList.contains('dark')) {
+            //     tile.style.backgroundColor = '#B59F3B';
+            // }
+            // else {
+            //     tile.style.backgroundColor = '#C9B458';
+            // }
+            tile.classList.add('yellow-background');
         }
         else {
-            if (document.body.classList.contains('dark')) {
-                tile.style.backgroundColor = '#565758';
-            }
-            else {
-                tile.style.backgroundColor = '#878a8c';
-            }
+            // if (document.body.classList.contains('dark')) {
+            //     tile.style.backgroundColor = '#565758';
+            // }
+            // else {
+            //     tile.style.backgroundColor = '#878a8c';
+            // }
+            tile.classList.add('dark-gray-background');
         }
+        tile.classList.remove('default-text-color');
+        tile.classList.add('white-text');
+        tile.classList.remove('empty-tile');
+        tile.classList.add('no-border');
 }
 
 function sumbitWord() {
@@ -450,15 +491,29 @@ function sumbitWord() {
             if (row.rowWord.length === 5) {
                     //loop through tiles
                     //check if tile.textcontent === oldWordsArrayLS[oldWordsArrayLS.length - 1].charAt(j)
+                    let flipDelay = 0;
                     for (let j = 0; j < rowTilesArray.length; j++) {
-                        rowTilesArray[j].classList.add('flip-in');
+                        rowTilesArray[j].classList.add('win');
+                        rowTilesArray[j].style.animation = `Flip 400ms linear ${flipDelay}ms 1 normal forwards`;
+                        flipDelay += 200;
                     }
                     
-                    flipSubmittedTile(rowTilesArray[0], 0);
-                    setTimeout(flipSubmittedTile(rowTilesArray[1], 1), 500);
-                    setTimeout(flipSubmittedTile(rowTilesArray[2], 2), 1000);
-                    setTimeout(flipSubmittedTile(rowTilesArray[3], 3), 1500);
-                    setTimeout(flipSubmittedTile(rowTilesArray[4], 4), 2000);
+                    // flipSubmittedTile(rowTilesArray[0], 0);
+                    setTimeout(() => {
+                        flipSubmittedTile(rowTilesArray[0], 0);
+                    }, 200);
+                    setTimeout(() => {
+                        flipSubmittedTile(rowTilesArray[1], 1);
+                    }, 400);
+                    setTimeout(() => {
+                        flipSubmittedTile(rowTilesArray[2], 2);
+                    }, 600);
+                    setTimeout(() => {
+                        flipSubmittedTile(rowTilesArray[3], 3);
+                    }, 800);
+                    setTimeout(() => {
+                        flipSubmittedTile(rowTilesArray[4], 4);
+                    }, 1000);
                     // setTimeout(() => {
                     //     for (let k = 0; k < rowTilesArray.length; k++) {
                     //         rowTilesArray[k].classList.remove('flip-in');
@@ -471,20 +526,29 @@ function sumbitWord() {
                             tile.classList.remove('win');
                             tile.classList.remove('incorrect');
                         } 
-                        // setTimeout(() => {
-                        //     for (let tile of rowTilesArray) {
-                        //         tile.classList.add('win');
-                        //         console.log('hi');
-                        //     } 
-                        // }, 3000);
-                        let delay = '3000';
+                        
+                        
                         for (let tile of rowTilesArray) {
                             // tile.style.animationDuration = '1000ms';
                             // tile.style.animationDelay = delay + 'ms';
                             tile.classList.add('win');
-                            delay += '200';
                             console.log('hi');
                         } 
+                        
+                        setTimeout(() => {
+                            let delay = 0;
+                            const winClassArr = [...document.querySelectorAll('.win')];
+                            for (let l = 0; l < rowTilesArray.length; l++) {
+                                winClassArr[l].style.animation = `Bounce 900ms linear ${delay}ms 1 normal forwards`;
+                                delay += 150;
+                            } 
+                            for (let i = 0; i < rowTilesArray.length; i++) {
+                                // tile.classList.add('win');
+                                // console.log('hi');
+                                rowTilesArray[i].classList.remove('win');
+                                rowTilesArray[i].classList.add('win');
+                            } 
+                        }, 1500);
                         submitCorrectWord();
                         console.log('Winner winner chicken dinner!');
                     }
@@ -508,15 +572,15 @@ function sumbitWord() {
             else {
                 //not enough letters
                 for (let tile of rowTilesArray) {
-                    tile.classList.remove('incorrect');
+                    tile.classList.add('incorrect');
+                    tile.style.animation = 'Shake 600ms';
                 } 
                 setTimeout(function() {
                     for (let tiles of rowTilesArray) {
-                        tiles.classList.add('incorrect');
+                        tiles.classList.remove('incorrect');
+                        tiles.style.animation = 'none';
                     }   
-                }, 10);
-                      
-                
+                }, 600);
             }
         }
     }
