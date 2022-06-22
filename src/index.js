@@ -219,11 +219,6 @@ const deleteButton = document.getElementById('delete-button');
 
 const skipButton = document.getElementById('skip-button');
 
-//skip current word and use a new one
-// function skipWord() {
-//     wordleGame.setNewGameWord();
-// }
-
 const skipWordModal = document.getElementById('skip-word-modal');
 const confirmSkipButton = document.getElementById('skip-yes-button');
 const cancelSkipButton = document.getElementById('skip-no-button');
@@ -275,8 +270,8 @@ confirmSkipButton.addEventListener('click', () => {
     // for (let i in correctWordTileArray) {
     //         correctWordTileArray[i].innerHTML = wordleGame.getCurrentWord().toUpperCase().charAt(i);
     // }
-    skipWord();
     wordleGame.setNewGameWord();
+    skipWord();
     //update stats
 });
 
@@ -315,11 +310,14 @@ deleteButton.addEventListener('click', () => {
 });
 
 function animateSelectedLetter(tile) {
+    tile.style.animation = 'none';
     tile.classList.add('popIn');
-    tile.style.animation = 'PopIn 100ms linear 0ms 1 normal forwards';
+    tile.style.animation = 'PopIn 100ms';   // linear 0ms 1 normal forwards
+    tile.animationFillMode = 'none';
     setTimeout(() => {
         tile.classList.remove('popIn');
         tile.classList.add('active-tile');  
+        tile.style.animation = 'none';
     }, 100);
 }
 
@@ -451,30 +449,12 @@ function removeTileAnimationClasses() {
 
 function flipSubmittedTile(tile, number) {
         if (tile.innerHTML === oldWordsArrayLS[oldWordsArrayLS.length - 1].charAt(number)) {
-            // if (document.body.classList.contains('dark')) {
-            //     tile.style.backgroundColor = '#538D4E';
-            // }
-            // else {
-            //     tile.style.backgroundColor = '#6AAA64';
-            // }
             tile.classList.add('green-background');
         }
         else if (oldWordsArrayLS[oldWordsArrayLS.length - 1].includes(tile.innerHTML)) {
-            // if (document.body.classList.contains('dark')) {
-            //     tile.style.backgroundColor = '#B59F3B';
-            // }
-            // else {
-            //     tile.style.backgroundColor = '#C9B458';
-            // }
             tile.classList.add('yellow-background');
         }
         else {
-            // if (document.body.classList.contains('dark')) {
-            //     tile.style.backgroundColor = '#565758';
-            // }
-            // else {
-            //     tile.style.backgroundColor = '#878a8c';
-            // }
             tile.classList.add('dark-gray-background');
         }
         tile.classList.remove('default-text-color');
@@ -520,7 +500,8 @@ function sumbitWord() {
                     //     }
                     // }, 2500);
                     
-                    if (row.rowWord == wordleGame.currentWord || row.rowWord == oldWordsArrayLS[oldWordsArrayLS.length - 1]) {
+                    //row.rowWord == wordleGame.currentWord || 
+                    if (row.rowWord == oldWordsArrayLS[oldWordsArrayLS.length - 1]) {
                         //animate word then..
                         for (let tile of rowTilesArray) {
                             tile.classList.remove('win');
@@ -539,8 +520,8 @@ function sumbitWord() {
                             let delay = 0;
                             const winClassArr = [...document.querySelectorAll('.win')];
                             for (let l = 0; l < rowTilesArray.length; l++) {
-                                winClassArr[l].style.animation = `Bounce 900ms linear ${delay}ms 1 normal forwards`;
-                                delay += 150;
+                                winClassArr[l].style.animation = `Bounce 1000ms linear ${delay}ms 1 normal forwards`;
+                                delay += 125;
                             } 
                             for (let i = 0; i < rowTilesArray.length; i++) {
                                 // tile.classList.add('win');
@@ -548,7 +529,7 @@ function sumbitWord() {
                                 rowTilesArray[i].classList.remove('win');
                                 rowTilesArray[i].classList.add('win');
                             } 
-                        }, 1500);
+                        }, 1150);
                         submitCorrectWord();
                         console.log('Winner winner chicken dinner!');
                     }
