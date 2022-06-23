@@ -38,12 +38,17 @@ button {
     }
 }
 
+.menu-item {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
 .menu-left,
 .menu-right {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 5px;
+    gap: 8px;
 }
 
 @media (max-width: 360px) {
@@ -126,8 +131,8 @@ body.light {
     font-size: 22px;
     font-family: 'Karnak';
     font-weight: 400;
-    margin-left: 12px;
-    letter-spacing: 0.3px;
+    margin-left: 0px;
+    letter-spacing: 1.5px;
     position: relative;
 }
 
@@ -143,12 +148,13 @@ body.light {
     .title {
         pointer-events: none;
         font-size: 37px;
+        letter-spacing: 0.3px;
     }
 }
 
 @media (max-width: 500px) {
     #not {
-        left: -45px;
+        left: -50px;
     }
 }
 
