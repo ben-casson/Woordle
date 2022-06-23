@@ -128,7 +128,7 @@ body.light {
 
 .title {
     pointer-events: none;
-    font-size: 22px;
+    font-size: 25px;    //22px
     font-family: 'Karnak';
     font-weight: 400;
     margin-left: 0px;
@@ -154,7 +154,7 @@ body.light {
 
 @media (max-width: 499px) {
     #not {
-        left: -50px;
+        left: -55px;
     }
 }
 
