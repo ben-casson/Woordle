@@ -4,6 +4,8 @@
     font-family: 'Karnak';
     src: url(../fonts/karnakcondensed-normal-700.woff);
 }
+@import url('https://fonts.googleapis.com/css2?family=Covered+By+Your+Grace&display=swap');
+
 
 
 html { 
@@ -43,6 +45,7 @@ button {
     align-items: center;
     gap: 5px;
 }
+
 @media (max-width: 360px) {
     .menu-left,
     .menu-right {
@@ -57,7 +60,7 @@ button {
     font-style: italic;
     color: var(--text-color);
     font-size: 16px;
-    font-weight: 500;
+    font-weight: 700;
     letter-spacing: 1px;
     cursor: pointer;
 }
@@ -89,6 +92,17 @@ body.light {
     }
 }
 
+// @media (max-width: 500px) {
+//     .menu-left {
+//         position: relative;
+//     }
+//     #help-button {
+//         position: absolute;
+//         left: 72vw;
+//     }
+// }
+
+
 #statistics-icon {
     fill: var(--icon-color);
     width: 24px;
@@ -114,13 +128,30 @@ body.light {
     font-weight: 400;
     margin-left: 12px;
     letter-spacing: 0.3px;
+    position: relative;
 }
-@media (min-width: 360px) {
+
+#not {
+    position: absolute;
+    left: -75px;
+    top: 0;
+    font-family: 'Covered By Your Grace', cursive;
+    color: #adadad;
+}
+
+@media (min-width: 500px) { // 360px
     .title {
         pointer-events: none;
         font-size: 37px;
     }
 }
+
+@media (max-width: 500px) {
+    #not {
+        left: -45px;
+    }
+}
+
 
 #theme-button {
     cursor: pointer;
