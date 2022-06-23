@@ -16,12 +16,15 @@
             -->
         <header>
             <div class="menu-left">
-                <button id="skip-button">next</button>
+                <button id="skip-button">new</button>
                 <button id="help-button" aria-label="Help">
                     <!-- svg -->
                 </button>
             </div>
-            <h1 class="title">Wordle</h1>
+            <h1 class="title">
+                <div id="not">(Not)</div>    
+                Wordle
+            </h1>
             <div class="menu-right">
                 <button id="statistics-button" aria-label="Statistics">
                     <svg id="statistics-icon" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
@@ -180,7 +183,7 @@
                             <p>The letter <span class="bold-text">U</span> is not in the word in any spot.</p>
                         </div>
                     </div>
-                    <p id="help-menu-new-game-text">Click <span id="help-menu-next">next</span> to start a new game with a new word. 
+                    <p id="help-menu-new-game-text">Click <span id="help-menu-next">new</span> to start a new game with a new word. 
                         <span class="bold-text">This will result in a loss if any guesses were made.</span>
                     </p>
                 </div>
