@@ -1,4 +1,4 @@
-# Wordle
+# Wordle clone
 [Live demo](https://ben-casson.github.io/Wordle-clone/)
 
 <br>
