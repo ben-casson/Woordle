@@ -16,6 +16,8 @@ const exampleLetterCorrect = document.getElementById('example-letter-correct');
 const exampleLetterWrongSpot = document.getElementById('example-letter-wrong-spot');
 const exampleLetterIncorrect = document.getElementById('example-letter-incorrect');
 
+const gameOverCorrectWordDisplay = document.querySelector('.game-over-container');
+
 const correctWordTile = document.querySelectorAll('.correct-word-tile');
 const correctWordTileArray = [...correctWordTile];
 
@@ -450,6 +452,7 @@ function submitCorrectWord() {
     //update stats
     //display stats with 'new word' button
     setTimeout(() => {
+        gameOverCorrectWordDisplay.style.display = 'none';
         statisticsCloseButton.style.display = 'none';
         statisticsModal.classList.remove('close');
         statisticsModal.classList.add('open');
@@ -457,6 +460,24 @@ function submitCorrectWord() {
             newWordButton.style.display = 'block';
         }, 225);
     }, 3000);
+}
+const statsTile = document.querySelectorAll('.stats-tile');
+const statsTileArray = [...statsTile];
+function displayStatsOnLoss() {
+    for (let i in statsTileArray) {
+        // statsTileArray[i].innerHTML = wordleGame.currentWord.toUpperCase().charAt(i);
+        // oldWordsArrayLS[oldWordsArrayLS.length - 1].toUpperCase().charAt(i);
+        statsTileArray[i].innerHTML = oldWordsArrayLS[oldWordsArrayLS.length - 1].toUpperCase().charAt(i);
+    }
+    setTimeout(() => {
+        statisticsCloseButton.style.display = 'none';
+        statisticsModal.classList.remove('close');
+        statisticsModal.classList.add('open');
+        setTimeout(() => {
+            gameOverCorrectWordDisplay.style.display = 'flex';
+            newWordButton.style.display = 'block';
+        }, 225);
+    }, 1000);
 }
 
 function removeTileAnimationClasses() {
@@ -596,6 +617,7 @@ function sumbitWord() {
                             }
                             else {
                                 //player loses game, display modal
+                                displayStatsOnLoss();
                             }
                         }
                     }
