@@ -167,6 +167,19 @@ body.light {
     font-weight: 500;
 }
 
+@media (max-width: 380px) {
+    .title {
+        font-size: 20px;
+    }
+    #not {
+        left: -45px;
+    }
+    #theme-button,
+    #skip-button {
+        font-size: 14px;
+    }
+}
+
 #help-container {
     display: none;
     position: fixed;
@@ -769,6 +782,12 @@ body.light {
     font-weight: bold;
     margin-bottom: 14px;
     margin-top: -11px;
+}
+
+.correct-word-section-container {
+    padding-top: 25px;
+    padding-bottom: 25px;
+    width: 220px;
 }
 
 #correct-word-container {
