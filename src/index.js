@@ -181,18 +181,20 @@ function checkForEmptyLSArray() {
         localStorage.setItem('oldWordsArrayLS', JSON.stringify(oldWordsArray));
         newWordsArrayLS = JSON.parse(localStorage.getItem('newWordsArrayLS'));
         oldWordsArrayLS = JSON.parse(localStorage.getItem('oldWordsArrayLS'));
-        wordleGame.setNewGameWord();
+        // wordleGame.setNewGameWord();
         for (let i in correctWordTileArray) {
             correctWordTileArray[i].innerHTML = wordleGame.getCurrentWord().toUpperCase().charAt(i);
         }
         console.log(wordleGame.getCurrentWord());
       }
-    else {
-        wordleGame.currentWord = oldWordsArrayLS[oldWordsArrayLS.length - 1];
-        for (let i in correctWordTileArray) {
-            correctWordTileArray[i].innerHTML = wordleGame.currentWord.toUpperCase().charAt(i);
-        }
-    }
+      wordleGame.setNewGameWord();
+      console.log(wordleGame.getCurrentWord());
+    // else {
+    //     wordleGame.currentWord = oldWordsArrayLS[oldWordsArrayLS.length - 1];
+    //     for (let i in correctWordTileArray) {
+    //         correctWordTileArray[i].innerHTML = wordleGame.currentWord.toUpperCase().charAt(i);
+    //     }
+    // }
 }
 
 
@@ -638,7 +640,12 @@ window.addEventListener('keyup', event => {
         }
         else if (keyLetter === 'Enter') {sumbitWord()}
     }
+    if (keyLetter === ' ' || keyLetter === 'Enter') {event.preventDefault()}
 });
+
+window.addEventListener('keypress', event => {
+    if (event.key === ' ' || event.key === 'Enter') {event.preventDefault()}
+})
 
 
 window.onload = () => {

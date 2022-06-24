@@ -12,6 +12,7 @@ body.dark {
     --green: #538D4E;
     --disabled-button-background-color: #1E1E1E;
     --disabled-button-color: #606060;
+    --modal-border-color: #1a1a1b;
 }
 body.light {
     --background-color: #fff;
@@ -27,4 +28,5 @@ body.light {
     --green: #6AAA64;
     --disabled-button-background-color: #C9CBCC;
     --disabled-button-color: #ececec;
+    --modal-border-color: #f6f7f8;
 }

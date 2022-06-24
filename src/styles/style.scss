@@ -951,6 +951,7 @@ body.light {
     background-repeat:no-repeat;
     background-position: center center;
     background-size: 19px;
+    align-self: flex-end;
 }
 body.dark {
     #statistics-close-button {
@@ -963,3 +964,109 @@ body.light {
     }
 }
 
+#statistics-content-container {
+    display: flex;
+    flex-direction: column;
+    border-radius: 8px;
+    border: 1px solid var(--modal-border-color);
+    width: 90%;
+}
+
+.game-over-container {
+    display: none;
+    font-size: 20px;
+    letter-spacing: 0.5px;
+    text-align: center;
+    color: var(--text-color);
+    font-weight: 700;
+    margin-bottom: 40px;
+}
+
+.statistics-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.statistics-content h1 {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text-color);
+    letter-spacing: 0.5px;
+    margin-bottom: 15px;
+}
+
+.statistics {
+    display: flex;
+    justify-content: center;
+    // align-items: center;
+    gap: 3px;
+    margin-bottom: 25px;
+}
+
+.statistic-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 60px;
+    gap: 5px;
+}
+
+.statistic {
+    font-size: 36px;
+    letter-spacing: 0.3px !important;
+    font-variant-numeric: proportional-nums;
+}
+
+.statistic-container .label {
+    font-size: 12px !important;
+    letter-spacing: 0.5px;
+    text-align: center;
+}
+
+.guess-distribution-container {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    align-self: stretch;
+    padding-left: 45px;
+    padding-right: 45px;
+}
+
+.graph-row {
+    display: grid;
+    grid-template-columns: auto auto 1fr;
+    width: 90%;
+}
+
+.guess-number {
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 4px;
+}
+
+.graph-zero-block {
+    width: calc(.045 * 100vw);
+    height: 20px;
+    background-color: var(--dark-gray);
+    color: white;
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+}
+
+@media (min-width: 560px) {
+    .graph-zero-block {
+        width: 25px;
+        height: 20px;
+    }
+}
+
+// .guess-amount-graph-container {
+
+// }

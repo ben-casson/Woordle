@@ -184,6 +184,7 @@
                     <p id="help-menu-new-game-text">Click <span id="help-menu-next">new</span> to start a new game with a new word. 
                         <span class="bold-text">This will result in a loss if any guesses were made.</span>
                     </p>
+                    <p class="bold-text">Refreshing the page will also result in a loss.</p>
                 </div>
             </section>
         </div>
@@ -208,7 +209,6 @@
                     </div>
                 </div>
             </div>
-            <!-- <span id="warning-text">WARNING:</span> -->
             <p id="skip-word-text"> Clicking the <span class="bold-text">NEW WORD</span> button will result in a loss for the current game if any guesses were made.</p>
             <div id="skip-buttons-container">
                 <button id="skip-yes-button">NEW WORD</button>
@@ -221,54 +221,74 @@
         -->
     <div id="statistics-container">
         <div class="content" id="statistics-content-container">
-            <button class="close-button" id="statistics-close-button">
-                <!-- svg -->
-            </button>
+            <button class="close-button" id="statistics-close-button"></button>
+            <div class="game-over-container">
+                <h1 id="game-over-title">GAME OVER</h1>
+                <!-- correct word -->
+            </div>
             <div class="statistics-content">
-                <h1>Statistics</h1>
+                <h1>STATISTICS</h1>
                 <div class="statistics">
                     <div class="statistic-container">
-                        <div class="statistic">0</div>
+                        <div class="statistic">60</div>
                         <p class="label">Played</p>
                     </div>
                     <div class="statistic-container">
-                        <div class="statistic">0</div>
+                        <div class="statistic">100</div>
                         <p class="label">Win %</p>
                     </div>
                     <div class="statistic-container">
-                        <div class="statistic">0</div>
+                        <div class="statistic">2</div>
                         <p class="label">Current Streak</p>
                     </div>
                     <div class="statistic-container">
-                        <div class="statistic">0</div>
+                        <div class="statistic">13</div>
                         <p class="label">Max Streak</p>
                     </div>
                 </div>
-                <h1>Guess Distribution</h1>
+                <h1>GUESS DISTRIBUTION</h1>
                 <div class="guess-distribution-container">
-                    <div class="row">
-                        <div class="guess">1</div>
-                        <div class="graph">0</div>
+                    <div class="graph-row">
+                        <div class="guess-number">1</div>
+                        <div class="graph-zero-block">0</div>
+                        <div class="guess-amount-graph-container">
+                            <div class="guess-amount-graph"></div>
+                        </div>
                     </div>
-                    <div class="row">
-                        <div class="guess">2</div>
-                        <div class="graph">0</div>
+                    <div class="graph-row">
+                        <div class="guess-number">2</div>
+                        <div class="graph-zero-block">0</div>
+                        <div class="guess-amount-graph-container">
+                            <div class="guess-amount-graph"></div>
+                        </div>
                     </div>
-                    <div class="row">
-                        <div class="guess">3</div>
-                        <div class="graph">0</div>
+                    <div class="graph-row">
+                        <div class="guess-number">3</div>
+                        <div class="graph-zero-block">0</div>
+                        <div class="guess-amount-graph-container">
+                            <div class="guess-amount-graph"></div>
+                        </div>
                     </div>
-                    <div class="row">
-                        <div class="guess">4</div>
-                        <div class="graph">0</div>
+                    <div class="graph-row">
+                        <div class="guess-number">4</div>
+                        <div class="graph-zero-block">0</div>
+                        <div class="guess-amount-graph-container">
+                            <div class="guess-amount-graph"></div>
+                        </div>
                     </div>
-                    <div class="row">
-                        <div class="guess">5</div>
-                        <div class="graph">0</div>
+                    <div class="graph-row">
+                        <div class="guess-number">5</div>
+                        <div class="graph-zero-block">0</div>
+                        <div class="guess-amount-graph-container">
+                            <div class="guess-amount-graph"></div>
+                        </div>
                     </div>
-                    <div class="row">
-                        <div class="guess">6</div>
-                        <div class="graph">0</div>
+                    <div class="graph-row">
+                        <div class="guess-number">6</div>
+                        <div class="graph-zero-block">0</div>
+                        <div class="guess-amount-graph-container">
+                            <div class="guess-amount-graph"></div>
+                        </div>
                     </div>
                 </div>
                 <button id="new-word-button">NEW WORD</button>
