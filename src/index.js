@@ -348,10 +348,11 @@ function displayTileLetter(letter) {
             for (let tile of rowTilesArray) {
                 removeTileAnimationClasses();
                 if (tile.textContent === '') {
-                    tile.textContent = letter.dataset.key;
+                    tile.textContent = letter;
+                    // console.log(letter.dataset.key);
                     tile.classList.remove('empty-tile');
                     animateSelectedLetter(tile);
-                    row.rowWord = "" + row.rowWord + letter.dataset.key.toLowerCase();
+                    row.rowWord = "" + row.rowWord + letter.toLowerCase();
                     if (tile === rowTilesArray[rowTilesArray.length - 1]) {
                         row.filled = true;
                     }
@@ -364,7 +365,7 @@ function displayTileLetter(letter) {
 
 keyboardButtonsArray.forEach((letter) => {
     letter.addEventListener('click', (e) => {
-        displayTileLetter(letter);
+        displayTileLetter(letter.dataset.key);
         e.stopImmediatePropagation();
     });
 });
@@ -620,7 +621,24 @@ enterButton.addEventListener('click', () => {
 
 
 
+window.addEventListener('keyup', event => {
+    let keyLetter = event.key;
+    if (!statisticsModal.classList.contains('open') 
+        && !helpMenuContainer.classList.contains('open') 
+        && skipWordModal.style.display !== 'flex') {
+        //check if key is lowercase letter 
+        if (keyLetter.charCodeAt(0) >= 97 
+            && keyLetter.charCodeAt(0) <= 122
+            && keyLetter !== " ") {
 
+            displayTileLetter(keyLetter);
+        }
+        else if (keyLetter === 'Backspace' || keyLetter === 'Delete') {
+            deleteLetter();
+        }
+        else if (keyLetter === 'Enter') {sumbitWord()}
+    }
+});
 
 
 window.onload = () => {
