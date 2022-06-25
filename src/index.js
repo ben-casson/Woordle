@@ -399,12 +399,14 @@ const newWordButton = document.getElementById('new-word-button');
 
 statisticsButton.addEventListener('click', () => {
     // statisticsModal.style.display = 'flex';
+    
     statisticsModal.classList.remove('close');
     statisticsModal.classList.add('open');
     newWordButton.style.display = 'none';
     setTimeout(() => {
         statisticsCloseButton.style.display = 'block';
     }, 225);
+    gameOverCorrectWordDisplay.style.display = 'none';
 });
 
 statisticsCloseButton.addEventListener('click', () => {
@@ -591,6 +593,7 @@ function sumbitWord() {
                             let delay = 0;
                             const winClassArr = [...document.querySelectorAll('.win')];
                             for (let l = 0; l < rowTilesArray.length; l++) {
+                                // cubic-bezier(0,0,.39,.89) cubic-bezier(0,.35,.59,.89)
                                 winClassArr[l].style.animation = `Bounce 1000ms linear ${delay}ms 1 normal forwards`;
                                 delay += 125;
                             } 
