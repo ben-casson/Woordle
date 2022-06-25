@@ -8,6 +8,12 @@ themeButton.addEventListener('click', () => {
 });
 
 
+// localStorage.setItem('gamesPlayedCount', '0');
+// localStorage.setItem('gamesWonCount', '0');
+// localStorage.setItem('currentStreak', '0');
+// localStorage.setItem('maxStreak', '0');
+
+
 const helpButton = document.getElementById('help-button');
 const helpMenuContainer = document.getElementById('help-container');
 const closeHelpMenuButton = document.getElementById('close-help-menu-button');
@@ -152,7 +158,6 @@ function fillNewWordsArrayLS() {
 
 const Game = () => {
     let currentWord = "";
-    // let currentRow = 
     const setNewGameWord = () => {
         // for (let i in correctWordTileArray) {
         //     correctWordTileArray[i].innerHTML = oldWordsArrayLS[oldWordsArrayLS.length - 1].toUpperCase().charAt(i);
@@ -170,7 +175,44 @@ const Game = () => {
     const getCurrentWord = () => {
         return currentWord;
     };
-    return {currentWord, setNewGameWord, getCurrentWord};
+    const increaseGamesPlayedCount = () => {
+        let gamesPlayedCount = JSON.parse(localStorage.getItem('gamesPlayedCount'));
+        gamesPlayedCount++;
+        localStorage.setItem('gamesPlayedCount', JSON.stringify(gamesPlayedCount));
+    }
+    const increaseGamesWonCount = () => {
+        let gamesWonCount = JSON.parse(localStorage.getItem('gamesWonCount'));
+        gamesWonCount++;
+        localStorage.setItem('gamesWonCount', JSON.stringify(gamesWonCount));
+    }
+    const increaseCurrentStreak = () => {
+        let currentStreak = JSON.parse(localStorage.getItem('currentStreak'));
+        currentStreak++;
+        localStorage.setItem('currentStreak', JSON.stringify(currentStreak));
+    }
+    const resetCurrentStreak = () => {
+        localStorage.setItem('currentStreak', '0');
+    }
+    const increaseMaxStreak = () => {
+        let maxStreak = JSON.parse(localStorage.getItem('maxStreak'));
+        maxStreak++;
+        localStorage.setItem('maxStreak', JSON.stringify(maxStreak));
+    }
+    return {currentWord, setNewGameWord, getCurrentWord, increaseGamesPlayedCount, 
+            increaseGamesWonCount, increaseCurrentStreak, resetCurrentStreak, increaseMaxStreak,
+            get gamesPlayedCount() {
+                return JSON.parse(localStorage.getItem('gamesPlayedCount'));    
+            },
+            get gamesWonCount() {
+                return JSON.parse(localStorage.getItem('gamesWonCount'));    
+            },
+            get currentStreak() {
+                return JSON.parse(localStorage.getItem('currentStreak'));    
+            },
+            get maxStreak() {
+                return JSON.parse(localStorage.getItem('maxStreak'));    
+            }
+    };
 };
    
 const wordleGame = Game();
@@ -288,6 +330,10 @@ confirmSkipButton.addEventListener('click', () => {
     // for (let i in correctWordTileArray) {
     //         correctWordTileArray[i].innerHTML = wordleGame.getCurrentWord().toUpperCase().charAt(i);
     // }
+    if (!gameRow1Object.isCurrentRow) {
+        wordleGame.increaseGamesPlayedCount();
+        wordleGame.resetCurrentStreak();
+    }
     wordleGame.setNewGameWord();
     disableButton(confirmSkipButton);
     disableButton(cancelSkipButton);
@@ -575,6 +621,10 @@ function sumbitWord() {
                     
                     //row.rowWord == wordleGame.currentWord || 
                     if (row.rowWord == oldWordsArrayLS[oldWordsArrayLS.length - 1]) {
+                        wordleGame.increaseGamesWonCount();
+                        wordleGame.increaseGamesPlayedCount();
+                        if (wordleGame.currentStreak === wordleGame.maxStreak) {wordleGame.increaseMaxStreak()};
+                        wordleGame.increaseCurrentStreak();
                         //animate word then..
                         for (let tile of rowTilesArray) {
                             tile.classList.remove('win');
@@ -620,6 +670,8 @@ function sumbitWord() {
                             }
                             else {
                                 //player loses game, display modal
+                                wordleGame.increaseGamesPlayedCount();
+                                wordleGame.resetCurrentStreak();
                                 displayStatsOnLoss();
                             }
                         }
@@ -674,7 +726,13 @@ window.addEventListener('keypress', event => {
 
 
 window.onload = () => {
-    if (oldWordsArrayLS === null) {openHelpMenu()}
+    if (oldWordsArrayLS === null) {
+        openHelpMenu();
+        localStorage.setItem('gamesPlayedCount', '0');
+        localStorage.setItem('gamesWonCount', '0');
+        localStorage.setItem('currentStreak', '0');
+        localStorage.setItem('maxStreak', '0');
+    }
     checkForEmptyLSArray();
 }
 
