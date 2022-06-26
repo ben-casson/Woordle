@@ -168,7 +168,7 @@ const Game = () => {
         localStorage.setItem('newWordsArrayLS', JSON.stringify(newWordsArrayLS));
         oldWordsArrayLS.push(currentWord);
         localStorage.setItem('oldWordsArrayLS', JSON.stringify(oldWordsArrayLS));
-        console.log(currentWord);
+        // console.log(currentWord);
         removeTileAnimationClasses();
     };
     const getCurrentWord = () => {
@@ -185,8 +185,8 @@ const Game = () => {
         let gamesWonCount = JSON.parse(localStorage.getItem('gamesWonCount'));
         gamesWonCount++;
         localStorage.setItem('gamesWonCount', JSON.stringify(gamesWonCount));
-        console.log(gamesWonCount);
-        console.log(parseInt(JSON.parse(localStorage.getItem('gamesPlayedCount'))));
+        // console.log(gamesWonCount);
+        // console.log(parseInt(JSON.parse(localStorage.getItem('gamesPlayedCount'))));
         winRateDisplay.innerHTML = parseInt(gamesWonCount / JSON.parse(localStorage.getItem('gamesPlayedCount')) * 100);
     }
     const increaseCurrentStreak = () => {
@@ -236,10 +236,10 @@ function checkForEmptyLSArray() {
         for (let i in correctWordTileArray) {
             correctWordTileArray[i].innerHTML = wordleGame.getCurrentWord().toUpperCase().charAt(i);
         }
-        console.log(wordleGame.getCurrentWord());
+        // console.log(wordleGame.getCurrentWord());
       }
       wordleGame.setNewGameWord();
-      console.log(wordleGame.getCurrentWord());
+    //   console.log(wordleGame.getCurrentWord());
     // else {
     //     wordleGame.currentWord = oldWordsArrayLS[oldWordsArrayLS.length - 1];
     //     for (let i in correctWordTileArray) {
@@ -353,8 +353,8 @@ confirmSkipButton.addEventListener('click', () => {
 skipButton.addEventListener('click', () => {
     // skipWord(); move to 'yes' button inside skip modal
     // console.log(wordleGame.getCurrentWord());
-    console.log(gameRow1Object.isCurrentRow);
-    console.log(gameRow2Object.isCurrentRow);
+    // console.log(gameRow1Object.isCurrentRow);
+    // console.log(gameRow2Object.isCurrentRow);
     skipWordModal.style.display = 'flex';
     wordleGame.currentWord = oldWordsArrayLS[oldWordsArrayLS.length - 1];
     for (let i in correctWordTileArray) {
@@ -605,7 +605,7 @@ const graphZeroBlocksArray = [document.getElementById('graph-zero-block1'),
                               document.getElementById('graph-zero-block5'),
                               document.getElementById('graph-zero-block6')];
 const graphGuessAmountArray = [...document.querySelectorAll('.guess-amount-graph')];
-console.log(graphGuessAmountArray);
+// console.log(graphGuessAmountArray);
 
 let getLargestGuessNumberAmount = () => {
     let largestAmount = 0;
@@ -621,12 +621,12 @@ function updateGuessDistributionDisplay() {
     let graphWidth = 0;
     for (let a = 1; a < 7; a++) {
         let currentGuessCountValue = JSON.parse(localStorage.getItem(`guessCount${a}`));
-        console.log('Current value: ' + currentGuessCountValue);
+        // console.log('Current value: ' + currentGuessCountValue);
         if (currentGuessCountValue > 0) {
 
             graphZeroBlocksArray[a - 1].innerHTML = '';
             graphWidth = parseInt(currentGuessCountValue / getLargestGuessNumberAmount() * 100);
-            console.log(graphWidth);
+            // console.log(graphWidth);
             graphGuessAmountArray[a - 1].style.display = 'flex';
             graphGuessAmountArray[a - 1].style.width = `calc(${graphWidth}% - 5px)`;
             graphGuessAmountArray[a - 1].innerHTML = currentGuessCountValue;
@@ -694,7 +694,7 @@ function sumbitWord() {
                             // tile.style.animationDuration = '1000ms';
                             // tile.style.animationDelay = delay + 'ms';
                             tile.classList.add('win');
-                            console.log('hi');
+                            // console.log('hi');
                         } 
                         
                         setTimeout(() => {
@@ -713,11 +713,11 @@ function sumbitWord() {
                             } 
                         }, 1150);
                         submitCorrectWord();
-                        console.log('Winner winner chicken dinner!');
+                        // console.log('Winner winner chicken dinner!');
                     }
                     else {
                         //incorrect word
-                        console.log('incorrect word');
+                        // console.log('incorrect word');
                         for (let i = 0; i < gameRowObjects.length; i++) {
                             if (i < 5) {
                                 if (gameRowObjects[i].isCurrentRow) {
