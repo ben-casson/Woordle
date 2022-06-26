@@ -1098,10 +1098,18 @@ body.light {
     padding-bottom: 15px;
 }
 
+@media (max-width: 450px) {
+    .guess-distribution-container {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+
 .graph-row {
     display: grid;
     grid-template-columns: auto auto 1fr;
-    width: 90%;
+    // width: 90%;
+    width: 100%;
 }
 
 .guess-number {
@@ -1158,6 +1166,15 @@ body.light {
     }
 }
 
-// .guess-amount-graph-container {
 
-// }
+.guess-amount-graph {
+    background-color: var(--dark-gray);
+    color: white;
+    height: 20px;
+    width: 0;
+    // text-align: end;
+    display: none;
+    justify-content: end;
+    align-items: center;
+    padding-right: 8px;
+}
