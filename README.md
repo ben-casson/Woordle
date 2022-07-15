@@ -3,4 +3,4 @@
 
 <br>
 
-This project is a Wordle clone that has no wait times between games.
+This Wordle clone has no wait times between games. You can play as often as you want! 
