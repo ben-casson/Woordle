@@ -1,5 +1,5 @@
 # Wordle clone
-[Live demo](https://ben-casson.github.io/Wordle-clone/)
+[Live game](https://ben-casson.github.io/Wordle-clone/)
 
 <br>
 
